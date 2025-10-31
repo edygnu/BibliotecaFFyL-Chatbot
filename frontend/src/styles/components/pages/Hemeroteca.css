@@ -1,0 +1,276 @@
+.hemeroteca-main {
+  padding: 1rem 0.5rem;
+  background: #f7fafc;
+}
+
+.hemeroteca-main p {
+  font-size: 1rem;
+  color: #234;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.hemeroteca-card {
+  border-radius: 16px;
+  box-shadow: 0 2px 12px #0001;
+  background: #fff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.hemeroteca-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 24px #0002;
+}
+
+.hemeroteca-card-img-top {
+  width: 100%;
+  height: 110px;
+  object-fit: cover;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  object-position: center center;
+}
+
+.hemeroteca-card-body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  align-items: center;
+  text-align: center;
+}
+
+.hemeroteca-card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #2a3a5a;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.hemeroteca-card-title a {
+  color: #2176ae;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.hemeroteca-card-title a:hover {
+  color: #144863;
+  text-decoration: underline;
+}
+
+.hemeroteca-card-text {
+  font-size: 0.98rem;
+  color: #444;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.hemeroteca-button-listado {
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.hemeroteca-button-listado .btn {
+  border-radius: 20px;
+  padding: 0.5rem 1.2rem;
+  font-weight: 600;
+  font-size: 1rem;
+  background: #2176ae;
+  border: none;
+  color: #fff;
+  transition: background 0.2s;
+}
+
+.hemeroteca-button-listado .btn:hover {
+  background: #144863;
+}
+
+.hemeroteca-titulos {
+  margin-top: 2rem;
+}
+
+.hemeroteca-titulos-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.hemeroteca-section-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #2176ae;
+  background: #eaf4fb;
+  border-left: 6px solid #2176ae;
+  padding: 0.5rem 1rem;
+  margin: 2rem 0 1rem 0;
+  border-radius: 0 18px 18px 0;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px #0001;
+}
+
+.hemeroteca-card.hemeroteca-card-small {
+  max-width: 260px;
+  min-width: 160px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.hemeroteca-card.hemeroteca-card-small .hemeroteca-card-body {
+  align-items: stretch;
+  text-align: left;
+}
+
+.hemeroteca-card.hemeroteca-card-small .hemeroteca-card-title,
+.hemeroteca-card.hemeroteca-card-small .hemeroteca-card-text {
+  text-align: justify;
+  word-break: break-word;
+  hyphens: none;
+}
+
+.hemeroteca-card.hemeroteca-card-small .hemeroteca-card-title {
+  text-align: center;
+}
+
+.hemeroteca-card-img-top {
+  width: 100%;
+  height: 110px;
+  object-fit: cover;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  object-position: center center;
+}
+
+@media (max-width: 767px) {
+  .hemeroteca-card.hemeroteca-card-small {
+    max-width: 90vw;
+    min-width: 0;
+    height: 250px; /* Cards más chicas en mobile */
+    padding: 0.5rem 0.2rem;
+  }
+
+  .hemeroteca-card.hemeroteca-card-small .hemeroteca-card-img-top {
+    height: 270px; /* Imagen más baja en mobile */
+    object-fit: contain; /* Muestra la imagen completa */
+    background: #f7fafc;
+  }
+
+  .hemeroteca-titulos-lista .hemeroteca-card {
+    max-width: 98vw;
+    min-width: 0;
+    min-height: 210px; /* Altura mínima, pero la card puede crecer */
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    box-sizing: border-box;
+    padding-bottom: 1rem;
+  }
+  .hemeroteca-titulos-lista .img-fluid.rounded-start {
+    height: 80px; /* Imagen más chica para dejar espacio al texto y botón */
+    max-height: 35vw;
+    object-fit: contain;
+    background: #f7fafc;
+    width: 100%;
+    border-radius: 12px 12px 0 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    object-position: center center;
+  }
+  .hemeroteca-titulos-lista .hemeroteca-card-body {
+    padding: 0.7rem 0.7rem 0 0.7rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    align-items: stretch;
+    justify-content: flex-start;
+    text-align: left;
+  }
+  .hemeroteca-titulos-lista .hemeroteca-card-title {
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 0.3rem;
+    margin-top: 0.2rem;
+  }
+  .hemeroteca-titulos-lista .hemeroteca-card-text {
+    font-size: 0.95rem;
+    text-align: justify;
+    margin-bottom: 0.3rem;
+  }
+  .hemeroteca-titulos-lista .hemeroteca-button-listado {
+    margin-top: 0.7rem;
+    text-align: center;
+  }
+}
+
+@media (min-width: 768px) {
+  .hemeroteca-main {
+    padding: 2.5rem 2rem;
+  }
+
+  .hemeroteca-titulos-lista {
+    flex-direction: row;
+    gap: 2rem;
+  }
+
+  .hemeroteca-card {
+    min-width: 260px;
+    max-width: 340px;
+  }
+
+  .hemeroteca-card-img-top {
+    height: 200px;
+  }
+
+  .hemeroteca-titulos-lista .hemeroteca-card {
+    height: 240px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .hemeroteca-main {
+    padding: 3rem 8vw;
+  }
+
+  .hemeroteca-card {
+    max-width: 370px;
+  }
+
+  .hemeroteca-card-img-top {
+    height: 220px;
+  }
+}
+
+.hemeroteca-titulos-lista .hemeroteca-card {
+  height: 130px;
+  display: flex;
+  flex-direction: column;
+}
+
+.hemeroteca-titulos-lista .hemeroteca-card-body {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.hemeroteca-button-listado {
+  margin-top: auto;
+}

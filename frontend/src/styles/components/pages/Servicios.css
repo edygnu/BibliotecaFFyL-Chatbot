@@ -1,0 +1,123 @@
+/* Contenedor principal */
+.servicios-container {
+  padding: 2rem 4vw 2rem 4vw;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Grid de cards */
+.servicios-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  justify-items: center;
+}
+
+/* Card general */
+.servicios-card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 16px #0002;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 290px;
+  min-height: 220px;
+  transition: transform 0.15s, box-shadow 0.15s;
+  border: 1px solid #f0f0f0;
+}
+
+.servicios-card:hover {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 8px 32px #0003;
+  border-color: #e0e0e0;
+}
+
+/* Imagen arriba, tamaño fijo, bien centrada y sin cortes */
+.servicios-img {
+  width: 100%;
+  height: 90px;
+  object-fit: contain;
+  background: #f7fafc;
+  border-radius: 18px 18px 0 0;
+  display: block;
+  padding: 8px 0;
+}
+
+/* Cuerpo de la card */
+.servicios-card-body {
+  padding: 0.8rem 1rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  justify-content: flex-start;
+  min-width: 0;
+}
+
+.servicios-card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a2a3a;
+  margin-bottom: 0.3rem;
+  text-align: center;
+  letter-spacing: 0.01em;
+}
+
+.servicios-card-text {
+  font-size: 0.92rem;
+  color: #444;
+  margin-bottom: 0.5rem;
+  text-align: justify; /* <-- Cambiado de left a justify */
+  line-height: 1.4;
+  flex-grow: 1;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.servicios-card-btn {
+  text-align: center;
+  margin-top: auto;
+}
+
+.servicios-card-btn .btn {
+  border-radius: 16px;
+  padding: 0.32rem 0.9rem;
+  font-weight: 600;
+  font-size: 0.93rem;
+  background: #2176ae;
+  border: none;
+  color: #fff;
+  transition: background 0.2s, box-shadow 0.2s;
+  min-width: 70px;
+  max-width: 90%;
+  box-shadow: 0 2px 8px #0001;
+}
+
+.servicios-card-btn .btn:hover {
+  background: #144863;
+  box-shadow: 0 4px 16px #0002;
+}
+
+/* --- Desktop: grid de 2 o 3 columnas y cards horizontales --- */
+@media (min-width: 600px) {
+  .servicios-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1100px) {
+  .servicios-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .servicios-container {
+    padding-left: 8vw;
+    padding-right: 8vw;
+  }
+  .servicios-card {
+    max-width: 300px;
+    min-height: 180px;
+  }
+  .servicios-img {
+    height: 100px;
+  }
+}

@@ -1,0 +1,17 @@
+.novedades {
+    text-align: justify;
+    padding-top: 2.5rem;
+    padding-left: 12rem;
+    padding-right: 12rem;
+}
+
+.novedades h3 {
+    /* color: rgb(10, 10, 37); */
+    /* font-weight: bold; */
+}
+
+.novImg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

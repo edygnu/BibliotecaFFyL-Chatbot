@@ -1,0 +1,119 @@
+.fondo-bibliografico {
+  background: #efefef;
+  min-height: 100vh;
+  padding: 40px 0 20px 0;
+  font-family: 'Montserrat', Arial, sans-serif;
+}
+.fb-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.fb-colors {
+  margin-bottom: 10px;
+}
+.fb-colors span {
+  display: inline-block;
+  width: 28px;
+  height: 14px;
+  border-radius: 3px;
+  margin: 0 3px;
+}
+.fondo-bibliografico h1 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  margin-top: 18px;
+  color: #222a3a;
+  text-shadow: 0 2px 8px #0001, 0 1px 0 #fff;
+  text-align: center;
+  font-family: 'Montserrat', Arial, sans-serif;
+}
+.fondo-bibliografico h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+.fb-list {
+  max-width: 750px; /* antes: 600px */
+  margin: 0 auto;
+}
+.fb-item {
+  display: flex;
+  align-items: stretch;
+  background: #fff;
+  border-radius: 12px;
+  margin-bottom: 22px;
+  box-shadow: 0 2px 8px #0001;
+  position: relative;
+  min-height: 90px;
+}
+.fb-num {
+  min-width: 70px;
+  background: #ff7e6b;
+  color: #fff;
+  font-size: 2.1rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px 0 0 12px;
+  margin-right: 18px;
+  margin-left: -18px;
+  margin-top: -10px;
+  margin-bottom: -10px;
+  box-shadow: 2px 0 8px #0001;
+}
+.fb-item > div:last-child {
+  padding: 18px 18px 18px 0;
+  font-size: 1.08rem;
+}
+.fb-item strong {
+  font-size: 1.1rem;
+}
+.fb-item span {
+  font-size: 1rem;
+  color: #333;
+}
+.fb-orange .fb-num { background: #ff7e6b; }      /* Préstamos a domicilio */
+.fb-purple .fb-num { background: #a48cf0; }      /* Préstamo en sala de lectura */
+.fb-cyan .fb-num { background: #3ec6e0; }        /* Préstamo de fin de semana */
+.fb-green .fb-num { background: #7edc8a; }       /* Préstamo in situ */
+.fb-yellow .fb-num { background: #ffe07e; color: #a68c00; } /* Préstamos especiales */
+.fb-pink .fb-num { background: #f7a6c7; color: #a64c7c; }   /* Devolución */
+.fb-red .fb-num { background: #ff6b81; color: #fff; }        /* Renovación (más rojo, menos rosa) */
+.fb-indigo .fb-num { background: #7c7cf7; }      /* Reservas */
+.fb-orange { border-left: 12px solid #ff7e6b; }
+.fb-purple { border-left: 12px solid #a48cf0; }
+.fb-cyan { border-left: 12px solid #3ec6e0; }
+.fb-green { border-left: 12px solid #7edc8a; }
+.fb-yellow { border-left: 12px solid #ffe07e; }
+.fb-pink { border-left: 12px solid #f7a6c7; }
+.fb-red { border-left: 12px solid #ff6b81; }
+.fb-indigo { border-left: 12px solid #7c7cf7; }
+.fb-blue {
+  border-left: 12px solid #6db8f7;
+  background: #6db8f7;
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+  min-height: 70px;
+  margin-top: 30px;
+}
+.fb-final-text {
+  display: block;
+  font-weight: bold;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  text-align: center;
+  background: #fff6;
+  border-radius: 30px;
+  padding: 10px 18px;
+  line-height: 1.4;
+}
+@media (max-width: 700px) {
+  .fb-list { max-width: 98vw; }
+  .fb-item { flex-direction: column; align-items: flex-start; }
+  .fb-num { margin: 0 0 0 0; border-radius: 12px 12px 0 0; min-width: 100%; }
+  .fb-item > div:last-child { padding: 16px; }
+}

@@ -1,0 +1,158 @@
+version: "3.1"
+
+rules:
+
+- rule: Saludo simple
+  steps:
+  - intent: saludar
+  - action: utter_saludar
+
+- rule: Despedida
+  steps:
+  - intent: despedirse
+  - action: utter_despedirse
+
+- rule: Estado del bot
+  steps:
+  - intent: preguntar_estado_bot
+  - action: utter_estado_bot
+
+- rule: Usuario feliz
+  steps:
+  - intent: estado_feliz
+  - action: utter_feliz
+
+- rule: Desafío al bot
+  steps:
+  - intent: desafio_bot
+  - action: utter_soy_un_bot
+
+- rule: Agradecimiento
+  steps:
+  - intent: agradecer
+  - action: utter_agradecer
+
+- rule: Cantidad de libros
+  steps:
+  - intent: cantidad_libros
+  - action: utter_cantidad_libros
+
+- rule: Días de préstamo
+  steps:
+  - intent: dias_prestamo
+  - action: utter_dias_prestamo
+
+- rule: Atraso de libros
+  steps:
+  - intent: atraso_libro
+  - action: utter_atraso_libro
+
+- rule: Consultar colección
+  steps:
+  - intent: consultar_coleccion
+  - action: utter_consultar_coleccion
+
+- rule: Donación de libros
+  steps:
+  - intent: donacion_libros
+  - action: utter_donacion_libros
+
+- rule: Horarios biblioteca
+  steps:
+  - intent: horarios_biblioteca
+  - action: utter_horarios_biblioteca
+
+- rule: Teléfonos biblioteca
+  steps:
+  - intent: telefonos_biblioteca
+  - action: utter_telefonos_biblioteca
+
+- rule: Recursos bibliográficos
+  steps:
+  - intent: recursos_bibliograficos
+  - action: utter_recursos_bibliograficos
+
+- rule: Mate en sala
+  steps:
+  - intent: mate_sala_lectura
+  - action: utter_mate_sala_lectura
+
+- rule: Comida en sala
+  steps:
+  - intent: comida_sala_lectura
+  - action: utter_comida_sala_lectura
+
+- rule: Trabajo en grupo
+  steps:
+  - intent: trabajar_grupo_sala
+  - action: utter_trabajar_grupo_sala
+
+- rule: Lockers
+  steps:
+  - intent: lockers_biblioteca
+  - action: utter_lockers_biblioteca
+
+- rule: Tramitar carnet
+  steps:
+  - intent: tramitar_carnet
+  - action: utter_tramitar_carnet
+
+- rule: Computadoras en sala
+  steps:
+  - intent: computadoras_sala
+  - action: utter_computadoras_sala
+
+- rule: Pizarrones
+  steps:
+  - intent: pizarrones_biblioteca
+  - action: utter_pizarrones_biblioteca
+
+- rule: Préstamos a domicilio
+  steps:
+  - intent: prestamos_domicilio
+  - action: utter_prestamos_domicilio
+
+- rule: Préstamos en sala
+  steps:
+  - intent: prestamos_sala_lectura
+  - action: utter_prestamos_sala_lectura
+
+- rule: Préstamos fin de semana
+  steps:
+  - intent: prestamos_fin_semana
+  - action: utter_prestamos_fin_semana
+
+- rule: Préstamos in situ
+  steps:
+  - intent: prestamos_in_situ
+  - action: utter_prestamos_in_situ
+
+- rule: Préstamos especiales
+  steps:
+  - intent: prestamos_especiales
+  - action: utter_prestamos_especiales
+
+- rule: Devolución material
+  steps:
+  - intent: devolucion_material
+  - action: utter_devolucion_material
+
+- rule: Renovación material
+  steps:
+  - intent: renovacion_material
+  - action: utter_renovacion_material
+
+- rule: Servicio de referencia
+  steps:
+  - intent: servicio_referencia
+  - action: utter_servicio_referencia
+
+- rule: Preguntas fuera de alcance
+  steps:
+  - intent: out_of_scope
+  - action: utter_out_of_scope
+
+- rule: Fallback por defecto
+  steps:
+  - intent: nlu_fallback
+  - action: utter_default

@@ -1,0 +1,56 @@
+# Entornos virtuales de Python
+rasa-env/
+.venv/
+venv/
+env/
+
+# Archivos y carpetas de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Node.js y frontend
+node_modules/
+**/node_modules/
+dist/
+build/
+coverage/
+
+# Archivos de base de datos y modelos
+*.db
+models/
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Archivos de lock (opcional, descomenta si no quieres subirlos)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# Archivos temporales de VSCode y otros editores
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Archivos de configuración de entorno
+.env
+.env.*
+/backend/.env
+
+# Otros archivos temporales
+*.log
+*.bak
+*.tmp
+
+# Reportes de BFG Repo-Cleaner
+..bfg-report/

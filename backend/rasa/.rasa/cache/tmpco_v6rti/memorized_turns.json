@@ -1,0 +1,17 @@
+{
+  "lookup": {
+    "eJyLrq6NBQAEOAGx": "action_listen",
+    "eJyLrq7VUaguKEoti09MLsnMz7NSqIYw4vMSc1OtFKCcnMziktQ8oNrS4tQioJrMPCC3xEqhODGnNCWxqLY2FgAiGxxa": "utter_saludar",
+    "eJyLrq7VUaguKEoti09MLsnMz7NSqIYw4vMSc1OtFKCcnMziktQ8oNrS4tQioJrMPCC3xEqhODGnNCWxqJaAKaUlJalF8TDF5JpCwC2pxSWJKfnxaak5mVW1tbEA5JVTzA==": "utter_feliz",
+    "eJydjlEKgCAQBa+yB+gEXiVCltxgwTTctY/EuydY30Z/b2AY3lzqBOVIdFpclWMwUPqwAXcy8IBnUQrNzUKpORwaqgFBnx2mOqhkVUr2lf9WBl9IFF20G3m+vh3q6iC03MXrb8M=": "action_listen",
+    "eJyLrq7VUaguKEoti09MLsnMz7NSqIYw4vMSc1OtFKCcnMziktQ8oNrS4tQioJrMPCC3xEqhODGnNCWxqJaAKaUlJalF8TDFlJmSmJOaXoTXlFgASCJRxA==": "utter_ayudo_eso",
+    "eJyLrq7VUaguKEoti09MLsnMz7NSqIYw4vMSc1OtFKCcnMziktQ8oNrS4tQioJrMPCC3xEqhODGnNCWxqJaAKaUlJalF8TDFlJmSmJOaXkS5KZWlKfnxqcX5eMyJBQAtaG1c": "action_listen",
+    "eJyl0M0JgDAMhuFVMoATdBWREmyUQn8kTQUp3d2KehbsLR+8PIeMpQ5QNqZd4yw2BgXlPnRATwqe4WwSCq3Nibg1NrQpChK6bJDrh5JFiPUb9ynoaOV+5cgmakrxt/PxGVws+0uZTr1Ch/s=": "utter_ya_nos_seguias",
+    "eJylkEsKwzAMRK/iA/QEvkopQiRqEDhy0KcQTO4eQ9ptU5rdDDwew9zbdkttUXoBDs5VcmpHAMGZcnqXwuYknQ0j7QxLr56TYYkRdTuxhDspfOBrFiw06XXLGmMFsvq35+QZfLLOv65ZEaQaGE3BaF9kjx0fq6Wa": "action_listen",
+    "eJyLrq7VUaguKEoti09MLsnMz7NSqIYw4vMSc1OtFKCcnMziktQ8oNrS4tQioJrMPCC3xEqhODGnNCWxqJaAKaUlJalF8TDF5JpCwC2pxSWJKfnxJUUg+draWAA5nFRN": "utter_alegrar",
+    "eJydjtEJgDAMBVfpAE7QVURCsEEKNZU09ad0dyvqjwiKf3nkOK4vtTNlEVoBR/WRrSnHAYwzWXOO4JMSNzYnksZ4blOtSRiyQ6kvlqxKAhf81/LSQknRRVDZ/9+KMNAkT0U317ABk5BxiQ==": "utter_ayudo_eso",
+    "eJydjlEKgCAQRK/iATqBV4mQJZcQTGN3DUK8e0b1Fxj+7bBvHjPmMqi8Ee4GZnExaJXvwwRYUasneMeCobKJkSrjQo2iFYNPFqg0LEkEybxwr6WxBVnARiN0/f8tAo8LfS3qcR2pNpBj0zadwDGPrw==": "action_listen",
+    "eJylkNEJwzAMRFfxAJnAq5RgRHIEgysHSQ4Ek93r0PYv4JL+6dDpcadHPQZXV8EWaLKY2bv6HgLTE959RIpq4OYtCmmeyE2ad0qpzCRHh1LMIOFrvkvpZIEazTmYnPvfElHCIleJ7rD20i6g+U9apyVjOT81vgBfY6l5": "utter_seguinos",
+    "eJylkF0KAjEMhK/SA3iCXkWkBHcohZpKfgQpe3cr6pvSZX3LkMnHTI59PYR+FdwSna00jqG/hsR0QQxvUYsaeHhdIcNTeEiLQan6QrJOKG4GSR/zXsokC9Roacnkud+WiCqyfEu0h3X3cQFtf9ImLRl587+RvXDTn5DTA6N1w9c=": "action_listen"
+  }
+}

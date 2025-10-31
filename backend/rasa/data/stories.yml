@@ -1,0 +1,168 @@
+version: "3.1"
+
+stories:
+
+- story: saludo simple
+  steps:
+  - intent: saludar
+  - action: utter_saludar
+
+- story: despedida simple
+  steps:
+  - intent: despedirse
+  - action: utter_despedirse
+
+- story: agradecer simple
+  steps:
+  - intent: agradecer
+  - action: utter_agradecer
+
+- story: estado bot simple
+  steps:
+  - intent: preguntar_estado_bot
+  - action: utter_estado_bot
+
+- story: estado feliz simple
+  steps:
+  - intent: estado_feliz
+  - action: utter_feliz
+
+# PRÉSTAMOS
+- story: prestamos general simple
+  steps:
+  - intent: prestamos_general
+  - action: utter_prestamos_general
+
+- story: prestamos domicilio simple
+  steps:
+  - intent: prestamos_domicilio
+  - action: utter_prestamos_domicilio
+
+- story: prestamos sala simple
+  steps:
+  - intent: prestamos_sala_lectura
+  - action: utter_prestamos_sala_lectura
+
+- story: prestamos fin semana simple
+  steps:
+  - intent: prestamos_fin_semana
+  - action: utter_prestamos_fin_semana
+
+- story: prestamos in situ simple
+  steps:
+  - intent: prestamos_in_situ
+  - action: utter_prestamos_in_situ
+
+- story: prestamos especiales simple
+  steps:
+  - intent: prestamos_especiales
+  - action: utter_prestamos_especiales
+
+# INFORMACIÓN GENERAL
+- story: cantidad libros simple
+  steps:
+  - intent: cantidad_libros
+  - action: utter_cantidad_libros
+
+- story: dias prestamo simple
+  steps:
+  - intent: dias_prestamo
+  - action: utter_dias_prestamo
+
+- story: atraso libro simple
+  steps:
+  - intent: atraso_libro
+  - action: utter_atraso_libro
+
+- story: devolucion simple
+  steps:
+  - intent: devolucion_material
+  - action: utter_devolucion_material
+
+- story: renovacion simple
+  steps:
+  - intent: renovacion_material
+  - action: utter_renovacion_material
+
+- story: horarios simple
+  steps:
+  - intent: horarios_biblioteca
+  - action: utter_horarios_biblioteca
+
+- story: telefonos simple
+  steps:
+  - intent: telefonos_biblioteca
+  - action: utter_telefonos_biblioteca
+
+- story: recursos simple
+  steps:
+  - intent: recursos_bibliograficos
+  - action: utter_recursos_bibliograficos
+
+- story: consultar coleccion simple
+  steps:
+  - intent: consultar_coleccion
+  - action: utter_consultar_coleccion
+
+- story: donacion simple
+  steps:
+  - intent: donacion_libros
+  - action: utter_donacion_libros
+
+- story: hemeroteca simple
+  steps:
+  - intent: hemeroteca
+  - action: utter_hemeroteca
+
+# SERVICIOS
+- story: salas lectura simple
+  steps:
+  - intent: salas_lectura
+  - action: utter_salas_lectura
+
+- story: tramitar carnet simple
+  steps:
+  - intent: tramitar_carnet
+  - action: utter_tramitar_carnet
+
+- story: computadoras simple
+  steps:
+  - intent: computadoras_sala
+  - action: utter_computadoras_sala
+
+- story: pizarrones simple
+  steps:
+  - intent: pizarrones_biblioteca
+  - action: utter_pizarrones_biblioteca
+
+- story: lockers simple
+  steps:
+  - intent: lockers_biblioteca
+  - action: utter_lockers_biblioteca
+
+- story: servicio referencia simple
+  steps:
+  - intent: servicio_referencia
+  - action: utter_servicio_referencia
+
+# NORMATIVAS SALA
+- story: mate sala simple
+  steps:
+  - intent: mate_sala_lectura
+  - action: utter_mate_sala_lectura
+
+- story: comida sala simple
+  steps:
+  - intent: comida_sala_lectura
+  - action: utter_comida_sala_lectura
+
+- story: trabajo grupo simple
+  steps:
+  - intent: trabajar_grupo_sala
+  - action: utter_trabajar_grupo_sala
+
+# FALLBACK
+- story: out of scope
+  steps:
+  - intent: out_of_scope
+  - action: utter_out_of_scope

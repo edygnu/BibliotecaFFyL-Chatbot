@@ -1,0 +1,51 @@
+nav {
+
+    background-color: rgba(0, 105, 145, 1);
+    margin-bottom: 0;
+
+}
+
+nav ul {
+    font-family: 'Montserrat', sans-serif;
+    list-style: none;
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    flex-grow: 1;
+}
+
+nav ul li a {
+    text-transform: capitalize;
+    color: white;
+    text-decoration: none;
+    padding: 3px 6px;
+    display: block;
+    text-align: center;
+}
+
+nav ul li:hover {
+    color: rgba(21, 118, 197, 0.952);
+}
+
+nav ul li a:hover {
+    color: rgba(102, 184, 252, 0.952);
+}
+
+nav ul li a.active {
+    background-color: #4a8ab8;
+} 
+
+@media screen and (max-width: 768px) {
+    nav ul {
+        font-family: 'Montserrat', sans-serif;
+        list-style: none;
+        font-size: 0.7rem;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+}

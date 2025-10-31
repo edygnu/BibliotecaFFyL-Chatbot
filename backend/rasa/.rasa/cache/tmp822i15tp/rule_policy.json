@@ -1,0 +1,25 @@
+{
+  "lookup": {
+    "rules": {
+      "[{\"prev_action\": {\"action_name\": \"utter_ayudo_eso\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"utter_ayudo_eso\"}}, {\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"negar\"}}]": "utter_seguinos",
+      "[{\"prev_action\": {\"action_name\": \"utter_ayudo_eso\"}}, {\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"negar\"}}, {\"prev_action\": {\"action_name\": \"utter_seguinos\"}, \"user\": {\"intent\": \"negar\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"despedirse\"}}]": "utter_despedirse",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"despedirse\"}}, {\"prev_action\": {\"action_name\": \"utter_despedirse\"}, \"user\": {\"intent\": \"despedirse\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"desafio_bot\"}}]": "utter_soy_un_bot",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"desafio_bot\"}}, {\"prev_action\": {\"action_name\": \"utter_soy_un_bot\"}, \"user\": {\"intent\": \"desafio_bot\"}}]": "action_listen"
+    },
+    "rule_only_slots": [],
+    "rule_only_loops": [],
+    "rules_for_loop_unhappy_path": {},
+    "rules_not_in_stories": [
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"despedirse\"}}]",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"desafio_bot\"}}, {\"prev_action\": {\"action_name\": \"utter_soy_un_bot\"}, \"user\": {\"intent\": \"desafio_bot\"}}]",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"despedirse\"}}, {\"prev_action\": {\"action_name\": \"utter_despedirse\"}, \"user\": {\"intent\": \"despedirse\"}}]",
+      "predicting default action with intent back",
+      "predicting default action with intent session_start",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"desafio_bot\"}}]",
+      "predicting default action with intent restart"
+    ]
+  }
+}

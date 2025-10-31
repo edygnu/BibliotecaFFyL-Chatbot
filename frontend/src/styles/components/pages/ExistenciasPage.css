@@ -1,0 +1,71 @@
+.main-existencias {
+    /* background: #0e6e9d;
+    background: linear-gradient(270deg, #0e6e9d 10%, #155a7c 30%, rgba(75, 70, 70, 0.62) 50%);
+    background: -webkit-linear-gradient(270deg, #0e6e9d 10%, #155a7c 30%, rgba(75, 70, 70, 0.62) 50%);
+    background: -moz-linear-gradient(270deg, #0e6e9d 10%, #155a7c 30%, rgba(75, 70, 70, 0.62) 50%); */
+    padding: 0 1.5rem 0 1.5rem;
+}
+
+.main-existencias h2 {
+
+    text-transform: capitalize;
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    font-size: 30px;
+}
+
+
+
+.main-existencias p {
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    font-size: 20px;
+    color: black;
+}
+
+.card-title {
+    text-transform: capitalize;
+    text-align: center;
+}
+
+.col h5 {
+    color: rgb(10, 10, 37);
+}
+
+
+.col h6 {
+    color: black;
+    text-align: justify;
+
+}
+
+/* .card {
+    width: 50%;
+    max-width: 300px;
+  }
+  
+  .card img {
+    width: 50%;
+    object-fit: cover;
+  } */
+
+.card-img-top {
+    height: 28rem;
+    width: 100%;
+    object-fit: cover;
+}
+
+@media screen and (max-width: 768px) {
+
+       
+    .main-existencias h2 {
+        font-size: 25px;
+    }
+
+   
+    .main-existencias p {
+        text-align: justify;
+        font-size: 1.1rem;
+    }
+   
+}

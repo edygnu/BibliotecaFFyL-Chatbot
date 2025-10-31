@@ -1,0 +1,153 @@
+.accordion {
+  margin: 0 auto;
+  width: 80%;
+  padding: 0 12rem;
+}
+
+.accordion-item {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.accordion-item-header {
+  cursor: pointer;
+  padding: 0 1rem;
+}
+
+.accordion-item-body {
+  display: none;
+}
+
+.accordion-item-header:hover {
+  background-color: #eee;
+}
+
+.accordion-item-active {
+  background-color: #eee;
+  border-color: #ccc;
+}
+
+.accordion-item-active .accordion-item-body {
+  display: block;
+}
+
+.fichas {
+  padding-top: 2.5rem;
+  padding-left: 12rem;
+  padding-right: 12rem;
+}
+
+.carouselPrincipal {
+  padding-left: 12rem;
+  padding-right: 12rem;
+}
+
+.carousel-inner {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Estilos para que todas las imágenes del carousel tengan el mismo tamaño */
+.carousel-item img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.col h3 {
+  color: black;
+  text-transform: capitalize;
+}
+
+.accordion-body {
+  text-align: justify;
+}
+
+.btn-existencias {
+  display: flex;
+  padding-top: 30px;
+  padding-left: 85%;
+}
+
+.search-form {
+  max-width: 18rem;
+  margin: 0 auto;
+}
+
+.search-form .form-control {
+  border-radius: 0.25rem 0 0 0.25rem;
+}
+
+.search-form .btn {
+  border-radius: 0 0.25rem 0.25rem 0;
+}
+
+@media screen and (max-width: 1200px) and (min-width: 769px) {
+  .accordion {
+    padding: 0 8rem;
+  }
+  
+  .fichas {
+    padding-left: 8rem;
+    padding-right: 8rem;
+  }
+  
+  .carouselPrincipal {
+    padding-left: 8rem;
+    padding-right: 8rem;
+  }
+}
+
+@media screen and (max-width: 1000px) and (min-width: 769px) {
+  .accordion {
+    padding: 0 4rem;
+  }
+  
+  .fichas {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+  
+  .carouselPrincipal {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .accordion {
+    margin: 0 auto;
+    width: 90%;
+    padding: 0 2rem;
+  }
+
+  .fichas {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .carouselPrincipal {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Imágenes más pequeñas en móviles */
+  .carousel-item img {
+    height: 250px;
+  }
+
+  .btn-existencias {
+    display: flex;
+    padding: 2.5rem 0 0.3rem 33%;
+  }
+}
+
+/* Responsive para tablets */
+@media screen and (min-width: 769px) and (max-width: 1000px) {
+  .carousel-item img {
+    height: 350px;
+  }
+}

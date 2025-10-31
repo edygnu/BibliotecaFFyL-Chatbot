@@ -1,0 +1,59 @@
+{
+  "type": "MaxHistoryTrackerFeaturizer",
+  "state_featurizer": {
+    "action_texts": [],
+    "entity_tag_specs": [],
+    "feature_states": {
+      "intent": {
+        "afirmar": 0,
+        "back": 1,
+        "desafio_bot": 2,
+        "despedirse": 3,
+        "estado_feliz": 4,
+        "estado_triste": 5,
+        "negar": 6,
+        "nlu_fallback": 7,
+        "out_of_scope": 8,
+        "restart": 9,
+        "saludar": 10,
+        "session_start": 11
+      },
+      "action_name": {
+        "action_listen": 0,
+        "action_restart": 1,
+        "action_session_start": 2,
+        "action_default_fallback": 3,
+        "action_deactivate_loop": 4,
+        "action_revert_fallback_events": 5,
+        "action_default_ask_affirmation": 6,
+        "action_default_ask_rephrase": 7,
+        "action_two_stage_fallback": 8,
+        "action_unlikely_intent": 9,
+        "action_back": 10,
+        "...": 11,
+        "action_extract_slots": 12,
+        "action_informar_servicios": 13,
+        "action_informar_ubicacion": 14,
+        "utter_alegrar": 15,
+        "utter_atraso_libro": 16,
+        "utter_ayudo_eso": 17,
+        "utter_cantidad_libros": 18,
+        "utter_consultar_coleccion": 19,
+        "utter_despedirse": 20,
+        "utter_dias_prestamo": 21,
+        "utter_donacion_libros": 22,
+        "utter_feliz": 23,
+        "utter_horarios_biblioteca": 24,
+        "utter_saludar": 25,
+        "utter_seguinos": 26,
+        "utter_soy_un_bot": 27,
+        "utter_ya_nos_seguias": 28
+      },
+      "entities": {},
+      "slots": {},
+      "active_loop": {}
+    }
+  },
+  "remove_duplicates": true,
+  "max_history": 5
+}

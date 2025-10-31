@@ -1,0 +1,25 @@
+<div class="login">
+    <div class="container-fluid">
+        <div class="row">
+            <form action="/admin/login" method="post">
+                <div class="mb-3 row">
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="inputUser" placeholder="Usuario" name="usuario">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <div class="col-sm-3">
+                        <input type="password" class="form-control" id="inputPassword" placeholder="Contraseña"
+                            name="password">
+                    </div>
+                </div>
+                <div class="btn-login">
+                    <button type="submit" class="btn btn-primary">Ingresar</button>
+                </div>
+            </form>
+            {{#if error}}
+            <p>Usuario y/o contraseña incorrectos</p>
+            {{/if}}
+        </div>
+    </div>
+</div>

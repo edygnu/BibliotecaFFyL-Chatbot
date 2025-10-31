@@ -1,0 +1,45 @@
+{
+  "lookup": {
+    "rules": {
+      "[{\"prev_action\": {\"action_name\": \"utter_ayudo_eso\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"utter_ayudo_eso\"}}, {\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"negar\"}}]": "utter_seguinos",
+      "[{\"prev_action\": {\"action_name\": \"utter_ayudo_eso\"}}, {\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"negar\"}}, {\"prev_action\": {\"action_name\": \"utter_seguinos\"}, \"user\": {\"intent\": \"negar\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"dias_prestamo\"}}]": "utter_dias_prestamo",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"dias_prestamo\"}}, {\"prev_action\": {\"action_name\": \"utter_dias_prestamo\"}, \"user\": {\"intent\": \"dias_prestamo\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"atraso_libro\"}}]": "utter_atraso_libro",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"atraso_libro\"}}, {\"prev_action\": {\"action_name\": \"utter_atraso_libro\"}, \"user\": {\"intent\": \"atraso_libro\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"desafio_bot\"}}]": "utter_soy_un_bot",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"desafio_bot\"}}, {\"prev_action\": {\"action_name\": \"utter_soy_un_bot\"}, \"user\": {\"intent\": \"desafio_bot\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"cantidad_libros\"}}]": "utter_cantidad_libros",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"cantidad_libros\"}}, {\"prev_action\": {\"action_name\": \"utter_cantidad_libros\"}, \"user\": {\"intent\": \"cantidad_libros\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"despedirse\"}}]": "utter_despedirse",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"despedirse\"}}, {\"prev_action\": {\"action_name\": \"utter_despedirse\"}, \"user\": {\"intent\": \"despedirse\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"donacion_libros\"}}]": "utter_donacion_libros",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"donacion_libros\"}}, {\"prev_action\": {\"action_name\": \"utter_donacion_libros\"}, \"user\": {\"intent\": \"donacion_libros\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"consultar_coleccion\"}}]": "utter_consultar_coleccion",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"consultar_coleccion\"}}, {\"prev_action\": {\"action_name\": \"utter_consultar_coleccion\"}, \"user\": {\"intent\": \"consultar_coleccion\"}}]": "action_listen"
+    },
+    "rule_only_slots": [],
+    "rule_only_loops": [],
+    "rules_for_loop_unhappy_path": {},
+    "rules_not_in_stories": [
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"cantidad_libros\"}}]",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"despedirse\"}}]",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"desafio_bot\"}}, {\"prev_action\": {\"action_name\": \"utter_soy_un_bot\"}, \"user\": {\"intent\": \"desafio_bot\"}}]",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"dias_prestamo\"}}]",
+      "predicting default action with intent restart",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"atraso_libro\"}}]",
+      "predicting default action with intent session_start",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"donacion_libros\"}}, {\"prev_action\": {\"action_name\": \"utter_donacion_libros\"}, \"user\": {\"intent\": \"donacion_libros\"}}]",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"cantidad_libros\"}}, {\"prev_action\": {\"action_name\": \"utter_cantidad_libros\"}, \"user\": {\"intent\": \"cantidad_libros\"}}]",
+      "predicting default action with intent back",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"donacion_libros\"}}]",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"consultar_coleccion\"}}]",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"despedirse\"}}, {\"prev_action\": {\"action_name\": \"utter_despedirse\"}, \"user\": {\"intent\": \"despedirse\"}}]",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"atraso_libro\"}}, {\"prev_action\": {\"action_name\": \"utter_atraso_libro\"}, \"user\": {\"intent\": \"atraso_libro\"}}]",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"consultar_coleccion\"}}, {\"prev_action\": {\"action_name\": \"utter_consultar_coleccion\"}, \"user\": {\"intent\": \"consultar_coleccion\"}}]",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"dias_prestamo\"}}, {\"prev_action\": {\"action_name\": \"utter_dias_prestamo\"}, \"user\": {\"intent\": \"dias_prestamo\"}}]",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"desafio_bot\"}}]"
+    ]
+  }
+}

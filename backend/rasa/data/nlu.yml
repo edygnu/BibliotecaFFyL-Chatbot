@@ -1,0 +1,547 @@
+version: "3.1"
+
+nlu:
+- intent: saludar
+  examples: |
+    - hola
+    - buenos días
+    - buenas tardes
+    - buenas noches
+    - qué tal
+    - hola, ¿cómo estás?
+    - hola a todos
+    - hola, ¿qué tal?
+    - hey
+    - saludos
+
+- intent: despedirse
+  examples: |
+    - adiós
+    - hasta luego
+    - nos vemos
+    - chao
+    - chau
+    - cuídate
+    - que tengas un buen día
+    - hasta pronto
+    - me despido
+   
+    - totalmente
+    - ya los seguía
+    - ya los sigo
+    - sí
+    - ok
+
+- intent: negar
+  examples: |
+    - no
+    - para nada
+    - en absoluto
+    - no creo
+    - no me gusta
+    - no es correcto
+    - nunca
+    - no estoy de acuerdo
+
+- intent: estado_feliz
+  examples: |
+    - estoy feliz
+    - me siento genial
+    - estoy muy contento
+    - todo va perfecto
+    - estoy de maravilla
+    - me siento increíble
+    - estoy muy bien
+    - estoy súper feliz
+    - estoy emocionado
+    - me siento excelente
+    - bien
+    - muy bien
+    - todo bien
+    - perfecto
+    - excelente
+    - genial
+    - bárbaro
+    - de maravilla
+    - fantástico
+    - espectacular
+    - todo ok
+    - ok
+    - normal
+    - tranquilo
+    - relajado
+
+- intent: estado_triste
+  examples: |
+    - estoy triste
+    - me siento mal
+    - no estoy bien
+    - estoy decepcionado
+    - me siento muy mal
+    - estoy desanimado
+    - estoy deprimido
+    - no me siento bien
+    - estoy muy triste
+    - mi día fue horrible
+
+- intent: desafio_bot
+  examples: |
+    - ¿eres un bot?
+    - ¿eres humano?
+    - ¿estoy hablando con un bot?
+    - ¿eres real?
+    - ¿quién eres?
+    - ¿qué eres?
+    - ¿eres una máquina?
+    - ¿eres un asistente virtual?
+
+- intent: cantidad_libros
+  examples: |
+    - ¿Cuántos libros puedo retirar?
+    - ¿Cuántos libros me puedo llevar?
+    - ¿Cuántos libros puedo sacar?
+    - ¿Cuál es el límite de libros para retirar?
+
+- intent: dias_prestamo
+  examples: |
+    - ¿Por cuántos días es el préstamo?
+    - ¿Cuánto tiempo puedo tener un libro?
+    - ¿Cuántos días me prestan los libros?
+    - ¿Cuánto dura el préstamo?
+
+- intent: atraso_libro
+  examples: |
+    - ¿Qué pasa si no devuelvo el libro a tiempo?
+    - ¿Qué sucede si no renuevo el libro?
+    - ¿Qué pasa si me atraso con la devolución?
+    - ¿Qué pasa si no devuelvo o renuevo el libro en la fecha indicada?
+
+- intent: donacion_libros
+  examples: |
+    - ¿La Biblioteca recibe donaciones?
+    - ¿Puedo donar libros a la biblioteca?
+    - ¿Cómo dono un libro?
+    - Política de donación de libros
+
+- intent: consultar_coleccion
+  examples: |
+    - ¿Cómo puedo consultar las colecciones de la Biblioteca?
+    - ¿Dónde veo el catálogo de la biblioteca?
+    - ¿Cómo consulto el catálogo?
+    - ¿Cómo accedo a las colecciones?
+
+- intent: horarios_biblioteca
+  examples: |
+    - ¿Cúal es el horario de la Biblioteca?
+    - ¿Cuál es el horario de atención?
+    - ¿A qué hora abre la Biblioteca?
+    - ¿A qué hora cierra la Biblioteca?
+    - Horario sala de lectura
+    - Horario de atención al público
+    - Horario hemeroteca
+    - Horario préstamos
+    - ¿Hasta qué hora está abierta la Biblioteca?
+    - ¿Cuándo puedo ir a la Biblioteca?
+    - ¿Cuáles son los horarios de la Biblioteca?
+    - ¿Qué días está abierta la Biblioteca?
+    - ¿Hasta qué hora puedo devolver un libro?
+
+- intent: telefonos_biblioteca
+  examples: |
+    - ¿Cuál es el teléfono de la Biblioteca?
+    - ¿Qué número de teléfono tiene la Biblioteca?
+    - ¿Cómo puedo contactar a la Biblioteca por teléfono?
+    - ¿Tienen un número de teléfono para consultas?
+    - ¿Cuál es el número de contacto de la Biblioteca?
+    - Contacto
+    - Contacto telefónico
+    - Contacto telefónico de la Biblioteca
+    - Contactarme
+    - Contactar por teléfono
+    - Comunicarme con la Biblioteca
+    - Comunicarme
+    - Comunicarme con la Biblioteca por teléfono
+    - Comunicarme con la Biblioteca
+    - Comunicarme con la Biblioteca para consultas
+    - Consulta
+    - Consultas
+    - Consultas telefónicas
+    - Consultas telefónicas de la Biblioteca
+    - Consulta por teléfono
+    - Consultar por teléfono
+    - Número telefónico
+    - Número de contacto
+    - ¿Puedo llamar a la Biblioteca?
+    - ¿Cuál es el número de teléfono de la Biblioteca?
+    - ¿Tienen un número de teléfono para consultas?
+    - Teléfonos
+    - Teléfono
+    - Interno
+    - Internos
+    - ¿Cuál es el interno de la Biblioteca?
+    - ¿Cuál es el interno de préstamos?
+    - ¿Cuál es el interno de procesos técnicos?
+    - ¿Cuál es el interno de la dirección?
+    - ¿Cuál es el número de interno de la Hemeroteca?
+    - ¿Cuáles son los teléfonos de la Biblioteca?
+    - ¿Cuáles son los internos de la Biblioteca?
+    - ¿A qué número puedo llamar?
+    - ¿Puedo hablar con un bibliotecario por teléfono?
+    - ¿Puedo llamar a la Biblioteca para hacer una consulta?
+    - ¿Puedo hablar con alguien de la Biblioteca por teléfono?
+    - ¿Puedo hablar con una persona?
+    - Hablar por teléfono
+    - Hablar
+    - Hablar con alguien
+    - Hablar con una persona
+    - Hablar con un bibliotecario
+    - Hablar con un bibliotecario por teléfono
+    - Hablar con un bibliotecario para consultas
+    - Hablar con un bibliotecario para consultas telefónicas
+
+- intent: recursos_bibliograficos
+  examples: |
+    - ¿Qué tipo de recursos bibliográficos posee la Biblioteca?
+    - ¿Qué materiales tienen?
+    - ¿Qué tipo de material bibliográfico hay?
+    - ¿Qué recursos tiene la biblioteca?
+    - ¿Qué tipo de libros tienen?
+    - ¿Tienen revistas?
+    - ¿Tienen tesis?
+    - ¿Qué tipo de material puedo encontrar?
+    - Recursos disponibles
+    - Material bibliográfico
+    - ¿Tienen folletos?
+    - ¿Tienen seminarios?
+
+- intent: mate_sala_lectura
+  examples: |
+    - ¿Puedo tomar mate en la Sala de Lectura?
+    - ¿Está permitido el mate en la sala?
+    - ¿Puedo tomar mate mientras estudio?
+    - ¿Se puede tomar mate en la biblioteca?
+    - Mate en la sala de lectura
+    - ¿Puedo llevar mate?
+    - ¿Está permitido tomar mate?
+
+- intent: comida_sala_lectura
+  examples: |
+    - ¿Puedo comer en la Sala de Lectura?
+    - ¿Está permitido comer en la sala?
+    - ¿Puedo llevar comida?
+    - ¿Se puede comer en la biblioteca?
+    - Comida en la sala de lectura
+    - ¿Puedo traer comida?
+    - ¿Está permitido comer?
+    - ¿Puedo merendar?
+    - ¿Puedo almorzar?
+    - ¿Puedo tomar algo?
+    - ¿Puedo beber?
+
+- intent: trabajar_grupo_sala
+  examples: |
+    - ¿Puedo trabajar en grupo en la Sala de Lectura?
+    - ¿Puedo charlar en la Sala de Lectura?
+    - ¿Se puede hablar en la sala?
+    - ¿Puedo hacer trabajo grupal?
+    - ¿Está permitido hablar?
+    - ¿Hay salas para trabajar en grupo?
+    - ¿Puedo estudiar con amigos?
+    - ¿Se puede conversar?
+    - Trabajo en grupo
+    - ¿Hay sala parlante?
+    - ¿Hay sala silenciosa?
+    - ¿Dónde puedo hablar?
+    - ¿Dónde hay silencio?
+
+- intent: lockers_biblioteca
+  examples: |
+    - ¿Hay lockers para guardar mochilas?
+    - ¿Tienen casilleros?
+    - ¿Dónde guardo mi mochila?
+    - ¿Puedo guardar mis cosas?
+    - ¿Hay donde dejar la mochila?
+    - Lockers en la biblioteca
+    - Casilleros
+    - ¿Dónde dejo mis pertenencias?
+    - ¿Tienen armarios?
+    - ¿Hay guardamochilas?
+    - ¿Dónde guardo mis libros?
+
+- intent: agradecer
+  examples: |
+    - gracias
+    - muchas gracias
+    - te agradezco
+    - mil gracias
+    - gracias por la info
+    - gracias por la información
+    - gracias por ayudarme
+    - gracias por tu ayuda
+    - te lo agradezco
+    - muy agradecido
+    - agradecido
+    - thanks
+    - thank you
+    - perfecto gracias
+    - ok gracias
+    - genial gracias
+    - excelente gracias
+    - buenísimo gracias
+
+- intent: tramitar_carnet
+  examples: |
+    - ¿Cómo hago el carnet?
+    - ¿Cómo me asocio a la biblioteca?
+    - ¿Cómo tramito mi carnet?
+    - ¿Cómo saco el carnet?
+    - ¿Cómo ser socio?
+    - ¿Cómo asociarme?
+    - Requisitos carnet
+    - Carnet
+    - Asociarme
+    - ¿Qué necesito para el carnet?
+    - ¿Cómo obtengo el carnet?
+    - Trámite del carnet
+    - ¿Cómo me hago socio?
+    - ¿Cómo me inscribo en la biblioteca?
+    - ¿Qué documentos necesito para el carnet?
+    - ¿Dónde saco el carnet?
+    - ¿Cuándo puedo tramitar el carnet?
+    - Formulario carnet
+    - Carnet online
+    - Carnet presencial
+
+- intent: computadoras_sala
+  examples: |
+    - ¿Hay computadoras en Sala de Lectura?
+    - ¿Tienen computadoras?
+    - ¿Puedo usar computadoras?
+    - Computadoras en la sala
+    - ¿Hay PCs disponibles?
+    - ¿Tienen equipos de computación?
+    - ¿Puedo usar una computadora?
+    - Acceso a computadoras
+    - ¿Dónde hay computadoras?
+    - ¿Hay computadoras libres?
+    - PC en la biblioteca
+    - Equipos de cómputo
+
+- intent: pizarrones_biblioteca
+  examples: |
+    - ¿Tienen pizarrones?
+    - ¿Hay pizarrones?
+    - ¿Puedo usar pizarrones?
+    - Pizarrones en la biblioteca
+    - ¿Dónde hay pizarrones?
+    - ¿Tienen pizarra?
+    - ¿Hay pizarra para estudiar?
+    - Pizarrones para grupo
+    - ¿Puedo escribir en un pizarrón?
+    - ¿Hay donde escribir?
+    - Pizarra
+    - Pizarrones
+
+- intent: prestamos_domicilio
+  examples: |
+    - préstamos a domicilio
+    - préstamo a domicilio
+    - ¿cuántos libros puedo llevar a casa?
+    - ¿cuántos libros puedo retirar?
+    - libros a domicilio
+    - sacar libros
+    - llevar libros a casa
+    - préstamo para llevar
+    - ¿por cuántos días puedo llevar libros?
+    - cuánto dura el préstamo
+    - préstamos normales
+    - libros para casa
+
+- intent: prestamos_sala_lectura
+  examples: |
+    - préstamo en sala de lectura
+    - préstamos en sala
+    - consulta en sala
+    - material de referencia
+    - diccionarios
+    - publicaciones periódicas
+    - folletos
+    - ejemplares únicos
+    - ¿puedo consultar en sala?
+    - material que no sale
+    - consulta interna
+    - lectura en biblioteca
+
+- intent: prestamos_fin_semana
+  examples: |
+    - préstamo de fin de semana
+    - préstamos fin de semana
+    - ¿puedo llevar libros el viernes?
+    - libros para el fin de semana
+    - préstamo viernes
+    - devolver el lunes
+    - fin de semana
+    - viernes a lunes
+
+- intent: prestamos_in_situ
+  examples: |
+    - préstamo in situ
+    - préstamos in situ
+    - material que no sale
+    - seminarios de licenciatura
+    - tesis doctorales
+    - libros de edición agotada
+    - material especial
+    - consulta sin préstamo
+    - material restringido
+    - libros que no salen
+
+- intent: prestamos_especiales
+  examples: |
+    - préstamos especiales
+    - préstamo especial
+    - receso de verano
+    - receso de invierno
+    - vacaciones de verano
+    - vacaciones de invierno
+    - enero
+    - préstamos vacacionales
+    - libros para vacaciones
+    - préstamos de diciembre
+
+- intent: devolucion_material
+  examples: |
+    - devolución
+    - devolver libros
+    - ¿cuándo devuelvo?
+    - devolución de material
+    - devolver
+    - ¿qué pasa si me atraso?
+    - multas por atraso
+    - suspensión
+    - atraso en devolución
+    - penalidades
+    - sanciones
+
+- intent: renovacion_material
+  examples: |
+    - renovación
+    - renovar libros
+    - ¿cómo renuevo?
+    - extender préstamo
+    - renovación de material
+    - renovar préstamo
+    - ¿puedo renovar?
+    - extensión de préstamo
+    - renovar por teléfono
+    - renovar online
+    - sistema integrado
+
+- intent: servicio_referencia
+  examples: |
+    - servicio de referencia
+    - asesoramiento
+    - ayuda para buscar
+    - búsqueda de material
+    - ¿me pueden ayudar a buscar?
+    - orientación bibliográfica
+    - guía de búsqueda
+    - asistencia bibliotecaria
+    - consulta especializada
+    - referencia
+    - ayuda con búsquedas
+
+- intent: preguntar_estado_bot
+  examples: |
+    - ¿cómo estás?
+    - ¿como estas?
+    - ¿qué tal estás?
+    - ¿que tal estas?
+    - ¿cómo te va?
+    - ¿como te va?
+    - ¿todo bien?
+    - ¿cómo andás?
+    - ¿como andas?
+    - ¿qué tal?
+    - ¿que tal?
+    - ¿cómo está todo?
+    - ¿como esta todo?
+    - estoy bien y vos
+    - estoy bien ¿y vos?
+    - estoy bien y tu
+    - estoy bien ¿y tu?
+    - bien y vos
+    - bien ¿y vos?
+    - todo bien y vos
+    - todo bien ¿y vos?
+    - muy bien y vos
+    - muy bien ¿y vos?
+    - perfecto y vos
+    - perfecto ¿y vos?
+    - genial y vos
+    - genial ¿y vos?
+
+- intent: hemeroteca
+  examples: |
+    - información sobre hemeroteca
+    - qué es la hemeroteca
+    - horarios de hemeroteca
+    - hemeroteca horarios
+    - publicaciones periódicas
+    - revistas y periódicos
+    - donde está la hemeroteca
+    - cómo acceder a la hemeroteca
+    - consultar hemeroteca
+    - material hemerográfico
+    - revistas científicas
+    - periódicos antiguos
+    - acceso a publicaciones periódicas
+    - horario hemeroteca
+    - cuándo abre la hemeroteca
+    - horarios de atención hemeroteca
+
+- intent: prestamos_general
+  examples: |
+    - préstamos
+    - préstamo
+    - prestan libros
+    - ¿prestan libros?
+    - cómo hago para que me presten un libro
+    - ¿cómo hago para que me presten un libro?
+    - servicio de préstamos
+    - préstamo de libros
+    - información sobre préstamos
+    - ¿hacen préstamos?
+    - ¿puedo pedir prestado un libro?
+    - ¿cómo funciona el préstamo?
+    - sistema de préstamos
+
+- intent: salas_lectura
+  examples: |
+    - sala
+    - sala de lectura
+    - espacio de lectura
+    - lugar para estudiar
+    - lugar para leer
+    - ¿hay lugar para trabajar en grupo?
+    - ¿puedo hacer trabajos en grupo?
+    - ¿se puede hablar en la sala?
+    - espacios para estudiar
+    - salas para estudiar
+    - ¿dónde puedo estudiar?
+    - ¿hay salas?
+    - espacios de trabajo
+    - lugares para leer
+    - ¿tienen sala de lectura?
+    - salas disponibles
+    - espacios disponibles
+    - ¿dónde estudiar?
+    - lugar tranquilo
+    - espacio silencioso
+    - sala parlante
+    - sala silenciosa
+    - ¿hay sala para grupos?
+    - espacios de estudio
+    - zona de lectura
+    - área de estudio
+

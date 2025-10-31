@@ -1,0 +1,22 @@
+footer {
+    background-color: #333;
+    clear: both;
+    text-align: center;
+    padding: 5px 0;
+    margin-top: 1rem;
+
+}
+
+footer p {
+    font-family: 'Montserrat', sans-serif;
+    color: beige;
+    margin-top: 0.8rem;
+    font-size: 0.7rem;
+}
+
+@media screen and (max-width: 768px) {
+    footer p {
+        font-size: 0.5rem;
+        margin-top: 1rem;
+    }
+}

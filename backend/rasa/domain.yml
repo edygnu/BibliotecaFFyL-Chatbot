@@ -1,0 +1,165 @@
+version: "3.1"
+
+intents:
+  - saludar
+  - despedirse
+  - afirmar
+  - negar
+  - estado_feliz
+  - estado_triste
+  - desafio_bot
+  - preguntar_estado_bot
+  - agradecer
+  - cantidad_libros
+  - dias_prestamo
+  - atraso_libro
+  - consultar_coleccion
+  - donacion_libros
+  - horarios_biblioteca
+  - telefonos_biblioteca
+  - recursos_bibliograficos
+  - mate_sala_lectura
+  - comida_sala_lectura
+  - trabajar_grupo_sala
+  - lockers_biblioteca
+  - tramitar_carnet
+  - computadoras_sala
+  - pizarrones_biblioteca
+  - prestamos_general
+  - prestamos_domicilio
+  - prestamos_sala_lectura
+  - prestamos_fin_semana
+  - prestamos_in_situ
+  - prestamos_especiales
+  - devolucion_material
+  - renovacion_material
+  - servicio_referencia
+  - hemeroteca
+  - salas_lectura
+  - out_of_scope
+  - nlu_fallback
+
+responses:
+  utter_saludar:
+    - text: "¡Hola! ¿Cómo estás?"
+
+  utter_despedirse:
+    - text: "¡Hasta luego! Que tengas un buen día."
+    - text: "¡Adiós! Espero haberte ayudado. ¡Volvé cuando necesites!"
+    - text: "¡Nos vemos! La Biblioteca FFyL está aquí cuando la necesites."
+
+  utter_estado_bot:
+    - text: "Bien, gracias. Soy un bot desarrollado por la Biblioteca de la Facultad de Filosofía y Letras. ¿En qué te puedo ayudar?"
+
+  utter_soy_un_bot:
+    - text: "Soy un bot, entrenado por la Biblioteca."
+
+  utter_feliz:
+    - text: "¡Qué bueno! ¿En qué te puedo ayudar?"
+
+  utter_alegrar:
+    - text: "No te olvides de seguirnos en nuestras redes sociales: <a href='https://www.facebook.com/biblioteca.ffyl.uncuyo/' target='_blank'>Facebook</a> <a href='https://www.instagram.com/biblioteca.ffyl.uncuyo/' target='_blank'>Instagram</a>"
+
+  utter_ayudo_eso:
+    - text: "¿Ya nos seguías en Facebook e Instagram?"
+
+  utter_seguinos:
+    - text: "¡Te invitamos a seguirnos en nuestras redes sociales para estar al tanto de todas las novedades!"
+
+  utter_ya_nos_seguias:
+    - text: "¡Gracias por seguirnos! ¿En qué más te puedo ayudar?"
+
+  utter_agradecer:
+    - text: "De nada, un placer poder ayudarte."
+
+  utter_cantidad_libros:
+    - text: "Podés retirar hasta 6 libros a domicilio durante 7 días y 3 libros si son de consulta en la sala."
+
+  utter_dias_prestamo:
+    - text: "El préstamo a domicilio es por 7 días, el de sala de lectura es por el día."
+
+  utter_atraso_libro:
+    - text: "Se aplica suspensión de 5 días por cada día de atraso del material, y de 30 días cuando el libro es de consulta a sala."
+
+  utter_consultar_coleccion:
+    - text: "Podrás acceder a través del fichero catalográfico ubicado en Sala de Lectura y también al catálogo colectivo https://bibliotecas.uncuyo.edu.ar/"
+
+  utter_donacion_libros:
+    - text: "La Biblioteca recibe donaciones previa autorización de la Directora."
+  
+  utter_horarios_biblioteca:
+    - text: "La Biblioteca atiende de lunes a viernes. Estos son los horarios:\n- Préstamos: 8:00 a 13:00 y de 15:00 a 20:00\n- Hemeroteca: 8:00 a 13:00 y de 15:00 a 18:00 \n- Sala de Lectura: 8:00 a 20:00 \n- Procesos Técnicos: 8:00 a 20:45"
+
+  utter_telefonos_biblioteca:
+    - text: "Podés comunicarte telefónicamente con la Biblioteca llamando al 4135000 y luego marcando el interno correspondiente.\n- Circulación: interno 2230\n- Hemeroteca: interno 2224\n- Procesos Técnicos: interno 2209\n- Dirección: interno 2202"
+
+  utter_recursos_bibliograficos:
+    - text: "La Biblioteca posee diversos tipos de recursos bibliográficos:\n• Libros\n• Revistas\n• Folletos\n• Seminarios de licenciatura\n• Tesis doctorales"
+
+  utter_mate_sala_lectura:
+    - text: "No, en la Sala de Lectura no está permitido tomar mate y comer alimentos. Solo podés tomar agua."
+
+  utter_comida_sala_lectura:
+    - text: "No, en la Sala de Lectura no está permitido tomar mate y comer alimentos. Solo podés tomar agua."
+
+  utter_trabajar_grupo_sala:
+    - text: "En la Sala de Lectura Parlante se puede hablar en voz baja y trabajar en grupo. En la Sala Silenciosa no está permitido hablar ni hacer ningún tipo de ruidos."
+
+  utter_lockers_biblioteca:
+    - text: "En la Sala de Lectura hay lockers para que puedas guardar tus pertenencias. Solicitá una llave al encargado de Sala."
+
+  utter_tramitar_carnet:
+    - text: "Podés asociarte a la Biblioteca y obtener tu carnet de usuario de dos maneras. Para realizar el trámite online ingresá a la pestaña Servicios, Carnet y completá el formulario correspondiente. Si preferís tramitarlo de manera presencial, acercate con tu DNI y certificado de Alumno Regular, Egresado o Certificación de Servicios si sos docente de la facultad, a la oficina de Procesos Técnicos de lunes a viernes, de 8:00 a 20:00."
+
+  utter_computadoras_sala:
+    - text: "Sí, contamos con computadoras de uso libre en la Sala de Lectura Parlante."
+
+  utter_pizarrones_biblioteca:
+    - text: "En Sala de Lectura contamos con pizarrones para que puedas estudiar y realizar trabajos en grupo."
+
+  utter_prestamos_domicilio:
+    - text: "Préstamos a domicilio: podés retirar hasta 6 libros durante 7 días."
+
+  utter_prestamos_sala_lectura:
+    - text: "Préstamo en sala de lectura: podés consultar en sala de lectura todo material de referencia como los diccionarios, publicaciones periódicas, folletos y ejemplares únicos. Recordá que tenés que devolverlo en el día."
+
+  utter_prestamos_fin_semana:
+    - text: "Préstamo de fin de semana: podrás retirar un libro que sea de consulta a sala el día viernes con devolución el día lunes por la mañana."
+
+  utter_prestamos_in_situ:
+    - text: "Préstamo in situ: se realiza cuando necesitas consultar material que no sale del fondo bibliográfico como por ejemplo seminarios de licenciatura, tesis doctorales, o libros de edición agotada."
+
+  utter_prestamos_especiales:
+    - text: "Préstamos especiales: para el receso de verano podrás retirar hasta 6 libros durante el mes de enero. Las fechas y horarios se informan durante el mes de diciembre. Para el receso de invierno podrás retirar la misma cantidad de libros, por las dos semanas de vacaciones."
+
+  utter_devolucion_material:
+    - text: "Devolución: la devolución del material debes hacerla dentro de los plazos establecidos, de lo contrario se aplicará 5 (cinco) días de suspensión por cada día de atraso y 30 (treinta) días por cada día de atraso en el caso de no devolver material que no sale a domicilio."
+
+  utter_renovacion_material:
+    - text: "Renovación: podrás realizar la renovación del material a través de los siguientes canales: personalmente, telefónicamente, por correo o desde tu perfil del sistema integrado."
+
+  utter_servicio_referencia:
+    - text: "Servicio de referencia: podrás obtener asesoramiento en la búsqueda de material que necesites, como así también sobre el uso de los servicios que ofrece la biblioteca."
+
+  utter_hemeroteca:
+    - text: "Visita la sección Hemeroteca para obtener información sobre las publicaciones periódicas. Los horarios de atención de la Hemeroteca son de 8:00 a 13:00 y de 15:00 a 18:00."
+  
+  utter_salas_lectura:
+    - text: "Contamos con una Sala Parlante y una Sala Silenciosa para que puedas trabajar en grupo o estudiar en silencio. Consulta más en la sección Servicios."
+
+  utter_out_of_scope:
+    - text: "Por el momento no tengo una respuesta a esa pregunta. ¿En qué más te puedo ayudar?"
+
+  utter_default:
+    - text: "Por el momento no tengo una respuesta a esa pregunta. ¿En qué más te puedo ayudar?"
+
+  utter_prestamos_general:
+    - text: "Consulta la sección Servicios para obtener toda la información sobre Préstamos"
+
+actions:
+  - action_informar_servicios
+  - action_informar_ubicacion
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
