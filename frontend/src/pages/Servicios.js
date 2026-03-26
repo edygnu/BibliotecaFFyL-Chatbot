@@ -30,15 +30,15 @@ const servicios = [
         linkText: "Reglamento",
         external: false
     },
-    {
-        img: "img/DSI.jpg",
-        alt: "DSI",
-        titulo: "DSI",
-        texto: "Mediante la Diseminación Selectiva de la Información atendemos las necesidades específicas de bibliografía de nuestros usuarios.",
-        link: "#",
-        linkText: "Consultar",
-        external: false
-    },
+    // {
+    //     img: "img/DSI.jpg",
+    //     alt: "DSI",
+    //     titulo: "DSI",
+    //     texto: "Mediante la Diseminación Selectiva de la Información atendemos las necesidades específicas de bibliografía de nuestros usuarios.",
+    //     link: "#",
+    //     linkText: "Consultar",
+    //     external: false
+    // },
     {
         img: "img/referencia.jpg",
         alt: "Referencia Bibliográfica",
