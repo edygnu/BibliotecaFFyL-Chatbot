@@ -25,12 +25,19 @@ nlu:
     - que tengas un buen día
     - hasta pronto
     - me despido
-   
+
+- intent: afirmar
+  examples: |
+    - sí
+    - claro
     - totalmente
+    - correcto
+    - exacto
+    - perfecto
+    - ok
+    - de acuerdo
     - ya los seguía
     - ya los sigo
-    - sí
-    - ok
 
 - intent: negar
   examples: |
@@ -42,6 +49,19 @@ nlu:
     - no es correcto
     - nunca
     - no estoy de acuerdo
+
+- intent: no_necesito_ayuda
+  examples: |
+    - nada
+    - nada por ahora
+    - no necesito ayuda
+    - no gracias
+    - todo bien, gracias
+    - solo saludaba
+    - estoy bien así
+    - por ahora nada
+    - no, gracias
+    - eso es todo
 
 - intent: estado_feliz
   examples: |
@@ -58,7 +78,6 @@ nlu:
     - bien
     - muy bien
     - todo bien
-    - perfecto
     - excelente
     - genial
     - bárbaro
@@ -66,7 +85,6 @@ nlu:
     - fantástico
     - espectacular
     - todo ok
-    - ok
     - normal
     - tranquilo
     - relajado
@@ -83,6 +101,32 @@ nlu:
     - no me siento bien
     - estoy muy triste
     - mi día fue horrible
+    - triste
+    - cansado
+    - abatido
+    - agotado
+    - muy cansado
+    - bastante cansado
+    - estoy cansado
+    - estoy abatido
+    - estoy agotado
+    - me siento abatido
+    - me siento cansado
+    - me encuentro agotado
+    - no muy bien
+    - más o menos
+    - regular
+    - bastante mal
+    - no me siento muy bien
+    - sin energía
+    - sin ánimos
+    - muy bajo
+    - decaído
+    - me siento decaído
+    - con pocas ganas
+    - no tengo ganas de nada
+    - desanimado
+    - muy desanimado
 
 - intent: desafio_bot
   examples: |
@@ -94,6 +138,14 @@ nlu:
     - ¿qué eres?
     - ¿eres una máquina?
     - ¿eres un asistente virtual?
+    - ¿cómo te llamás?
+    - ¿cómo te llamas?
+    - ¿quién sos?
+    - ¿sos una persona?
+    - ¿sos un asistente?
+    - ¿sos un bot?
+    - ¿sos humano?
+    - ¿sos real?
 
 - intent: cantidad_libros
   examples: |
@@ -101,6 +153,11 @@ nlu:
     - ¿Cuántos libros me puedo llevar?
     - ¿Cuántos libros puedo sacar?
     - ¿Cuál es el límite de libros para retirar?
+    - cuantos libros puedo retirar
+    - cuántos libros puedo retirar en total
+    - cuantos libros me prestan
+    - cuántos libros puedo llevarme
+    - cuantos me puedo llevar
 
 - intent: dias_prestamo
   examples: |
@@ -108,6 +165,11 @@ nlu:
     - ¿Cuánto tiempo puedo tener un libro?
     - ¿Cuántos días me prestan los libros?
     - ¿Cuánto dura el préstamo?
+    - por cuantos dias me prestan
+    - por cuántos días puedo retirar libros
+    - cuantos dias dura el prestamo
+    - cuánto tiempo dura el préstamo a domicilio
+    - cuantos dias los puedo tener
 
 - intent: atraso_libro
   examples: |
@@ -364,11 +426,9 @@ nlu:
     - consulta en sala
     - material de referencia
     - diccionarios
-    - publicaciones periódicas
     - folletos
     - ejemplares únicos
     - ¿puedo consultar en sala?
-    - material que no sale
     - consulta interna
     - lectura en biblioteca
 
@@ -544,4 +604,122 @@ nlu:
     - espacios de estudio
     - zona de lectura
     - área de estudio
+
+- intent: buscar_libro_titulo
+  examples: |
+    - ¿tienen el libro [Cien años de soledad](titulo_libro)?
+    - busco el libro [Hamlet](titulo_libro)
+    - quisiera saber si está disponible [El Quijote](titulo_libro)
+    - ¿tienen [Rayuela](titulo_libro) en la biblioteca?
+    - ¿tienen el libro [rayuela](titulo_libro)?
+    - tienen [rayuela](titulo_libro)?
+    - rayuela, ¿lo tienen?
+    - busco [rayuela](titulo_libro)
+    - buscame [La casa de Bernarda Alba](titulo_libro)
+    - ¿existe el libro [El nombre de la rosa](titulo_libro) en el catálogo?
+    - necesito el libro [Ficciones](titulo_libro)
+    - ¿tienen [Facundo](titulo_libro)?
+    - quiero consultar [Martin Fierro](titulo_libro)
+    - buscar libro [Crónica de una muerte anunciada](titulo_libro)
+    - ¿está disponible [El túnel](titulo_libro)?
+    - busco [La vorágine](titulo_libro) en la biblioteca
+    - me interesa el libro [Poesía completa](titulo_libro)
+    - ¿hay existencias del libro [Don Segundo Sombra](titulo_libro)?
+    - quiero saber si tienen [Sobre héroes y tumbas](titulo_libro)
+    - ¿está [Los miserables](titulo_libro)?
+    - tienen [La Odisea](titulo_libro) disponible?
+    - buscá [Cien años de soledad](titulo_libro)
+    - necesito consultar [Ficciones](titulo_libro)
+    - ¿dónde puedo encontrar [Anna Karenina](titulo_libro)?
+    - buscá en el catálogo [Orgullo y prejuicio](titulo_libro)
+    - buscar [El Príncipe](titulo_libro) en UNCuyo
+    - ¿tienen [Harry Potter](titulo_libro)?
+    - quiero leer [Mujercitas](titulo_libro)
+    - consultar disponibilidad de [Drácula](titulo_libro)
+    - ¿tienen el libro [Malvinas desde las trincheras](titulo_libro)?
+    - busco [Malvinas desde las trincheras](titulo_libro)
+    - necesito [La tregua](titulo_libro)
+    - ¿existe [El aleph](titulo_libro)?
+    - quiero ver [Bestiario](titulo_libro)
+    - ¿hay [Veinte poemas de amor](titulo_libro)?
+    - buscá [Bomarzo](titulo_libro)
+    - consultar [La muerte de Artemio Cruz](titulo_libro)
+    - ¿dónde está [Paradiso](titulo_libro)?
+    - ¿tienen [El señor de los anillos](titulo_libro)?
+    - busco [El señor de los anillos](titulo_libro)
+    - buscá [El señor de los anillos](titulo_libro)
+    - quiero el libro [El señor de los anillos](titulo_libro)
+    - necesito [La comunidad del anillo](titulo_libro)
+    - quiero saber si tienen [Las dos torres](titulo_libro)
+    - ¿está [El retorno del rey](titulo_libro)?
+
+- intent: buscar_libro_autor
+  examples: |
+    - ¿tienen libros de [Borges](autor_libro)?
+    - buscame libros de [Shakespeare](autor_libro)
+    - ¿qué libros tienen de [García Márquez](autor_libro)?
+    - quiero ver libros de [Cortázar](autor_libro)
+    - ¿hay material de [Neruda](autor_libro) en la biblioteca?
+    - buscar autor [Cervantes](autor_libro)
+    - obras de [Sartre](autor_libro)
+    - ¿tienen algo de [Kafka](autor_libro)?
+    - libros de [Simone de Beauvoir](autor_libro)
+    - ¿qué hay de [Platón](autor_libro)?
+    - quiero material de [Nietzsche](autor_libro)
+    - ¿existe algo de [Sábato](autor_libro) en el catálogo?
+    - buscame obras del autor [Poe](autor_libro)
+    - material de [Freud](autor_libro)
+    - ¿tienen libros del autor [Marx](autor_libro)?
+    - busco autores [Dostoievski](autor_libro)
+    - ¿hay ejemplares de [Tolstoi](autor_libro)?
+    - quiero leer algún [Hemingway](autor_libro)
+    - busca publicaciones de [Foucault](autor_libro)
+    - ¿qué obras tiene [Derrida](autor_libro)?
+    - me interesa algo de [Borrachero](autor_libro)
+    - ¿dónde buscar a [Julio Cortázar](autor_libro)?
+    - libros del escritor [Sábato](autor_libro)
+    - ¿dónde están [Galeano](autor_libro)?
+    - quiero obras de [Zambrano](autor_libro)
+    - material de [Salvador Allende](autor_libro)
+    - ¿qué escribió [Ariel Dorfman](autor_libro)?
+    - buscar trabajos de [Amparo Lasies](autor_libro)
+    - libros de [Tolkien](autor_libro)
+    - ¿tienen libros de [J. R. R. Tolkien](autor_libro)?
+    - buscame libros de [JRR Tolkien](autor_libro)
+    - quiero ver obras de [Tolkien](autor_libro)
+    - ¿qué libros tienen de [Tolkien](autor_libro)?
+    - material del autor [J.R.R. Tolkien](autor_libro)
+
+- intent: buscar_libro_materia
+  examples: |
+    - ¿tienen libros de [historia](materia_libro)?
+    - busco libros sobre [filosofía](materia_libro)
+    - quiero material de [letras](materia_libro)
+    - ¿hay libros de [geografía](materia_libro)?
+    - buscame bibliografía de [antropología](materia_libro)
+    - necesito textos sobre [sociología](materia_libro)
+    - ¿qué tienen sobre [educación](materia_libro)?
+    - libros acerca de [lingüística](materia_libro)
+    - busco material de [psicología](materia_libro)
+    - quiero consultar [literatura argentina](materia_libro)
+    - ¿hay algo de [metodología de la investigación](materia_libro)?
+    - buscar por materia [didáctica](materia_libro)
+    - ¿me mostrás libros sobre [epistemología](materia_libro)?
+    - necesito bibliografía de [semiótica](materia_libro)
+    - quisiera ver títulos de [pedagogía](materia_libro)
+    - quiero buscar por tesauro UNESCO: [patrimonio cultural](materia_libro)
+    - libros de la materia [comunicación social](materia_libro)
+    - material sobre [estudios de género](materia_libro)
+    - recursos de [historia latinoamericana](materia_libro)
+    - consultar tema [filosofía política](materia_libro)
+
+- intent: out_of_scope
+  examples: |
+    - ¿quién ganó el partido?
+    - contame un chiste
+    - ¿cómo está el clima hoy?
+    - necesito ayuda con matemática
+    - quiero información de otra facultad
+    - ¿podés recomendarme una película?
+    - no tiene que ver con la biblioteca
 

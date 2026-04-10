@@ -5,6 +5,7 @@ intents:
   - despedirse
   - afirmar
   - negar
+  - no_necesito_ayuda
   - estado_feliz
   - estado_triste
   - desafio_bot
@@ -38,6 +39,9 @@ intents:
   - salas_lectura
   - out_of_scope
   - nlu_fallback
+  - buscar_libro_titulo
+  - buscar_libro_autor
+  - buscar_libro_materia
 
 responses:
   utter_saludar:
@@ -52,10 +56,13 @@ responses:
     - text: "Bien, gracias. Soy un bot desarrollado por la Biblioteca de la Facultad de Filosofía y Letras. ¿En qué te puedo ayudar?"
 
   utter_soy_un_bot:
-    - text: "Soy un bot, entrenado por la Biblioteca."
+    - text: "Soy un bot desarrollado por la Biblioteca de la Facultad de Filosofía y Letras"
 
   utter_feliz:
     - text: "¡Qué bueno! ¿En qué te puedo ayudar?"
+
+  utter_triste:
+    - text: "Para animarte podés encontrar excelentes libros en nuestra Biblioteca. Consultá nuestro catálogo: https://bibliotecas.uncuyo.edu.ar/explorador3/Search/Results?filter%5B%5D=building%3A%22Fac.+de+Filosof%C3%ADa+y+Letras%22"
 
   utter_alegrar:
     - text: "No te olvides de seguirnos en nuestras redes sociales: <a href='https://www.facebook.com/biblioteca.ffyl.uncuyo/' target='_blank'>Facebook</a> <a href='https://www.instagram.com/biblioteca.ffyl.uncuyo/' target='_blank'>Instagram</a>"
@@ -71,6 +78,15 @@ responses:
 
   utter_agradecer:
     - text: "De nada, un placer poder ayudarte."
+
+  utter_afirmar:
+    - text: "Perfecto. Decime qué necesitás y te ayudo."
+
+  utter_negar:
+    - text: "Está bien. Si querés, puedo ayudarte con horarios, préstamos, carnet o contacto."
+
+  utter_no_necesita_ayuda:
+    - text: "Perfecto. Si más tarde necesitás algo de la Biblioteca, escribime y te ayudo."
 
   utter_cantidad_libros:
     - text: "Podés retirar hasta 6 libros a domicilio durante 7 días y 3 libros si son de consulta en la sala."
@@ -153,12 +169,44 @@ responses:
   utter_default:
     - text: "Por el momento no tengo una respuesta a esa pregunta. ¿En qué más te puedo ayudar?"
 
+  utter_pedir_titulo:
+    - text: "¿Cuál es el título del libro que estás buscando?"
+
+  utter_pedir_autor:
+    - text: "¿De qué autor querés buscar libros?"
+
   utter_prestamos_general:
     - text: "Consulta la sección Servicios para obtener toda la información sobre Préstamos"
+
+entities:
+  - titulo_libro
+  - autor_libro
+  - materia_libro
+
+slots:
+  titulo_libro:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: titulo_libro
+  autor_libro:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: autor_libro
+  materia_libro:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: materia_libro
 
 actions:
   - action_informar_servicios
   - action_informar_ubicacion
+  - action_buscar_catalogo
 
 session_config:
   session_expiration_time: 60

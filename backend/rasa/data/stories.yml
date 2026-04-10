@@ -27,6 +27,11 @@ stories:
   - intent: estado_feliz
   - action: utter_feliz
 
+- story: estado triste simple
+  steps:
+  - intent: estado_triste
+  - action: utter_triste
+
 # PRÉSTAMOS
 - story: prestamos general simple
   steps:

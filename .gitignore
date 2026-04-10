@@ -10,6 +10,10 @@ __pycache__/
 *.pyo
 *.pyd
 
+# Cache y artefactos temporales de Rasa
+backend/rasa/.rasa/
+backend/rasa/results/
+
 # Node.js y frontend
 node_modules/
 **/node_modules/

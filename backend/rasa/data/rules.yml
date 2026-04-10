@@ -22,6 +22,11 @@ rules:
   - intent: estado_feliz
   - action: utter_feliz
 
+- rule: Usuario triste
+  steps:
+  - intent: estado_triste
+  - action: utter_triste
+
 - rule: Desafío al bot
   steps:
   - intent: desafio_bot
@@ -31,6 +36,21 @@ rules:
   steps:
   - intent: agradecer
   - action: utter_agradecer
+
+- rule: Afirmación general
+  steps:
+  - intent: afirmar
+  - action: utter_afirmar
+
+- rule: Negación general
+  steps:
+  - intent: negar
+  - action: utter_negar
+
+- rule: No necesita ayuda
+  steps:
+  - intent: no_necesito_ayuda
+  - action: utter_no_necesita_ayuda
 
 - rule: Cantidad de libros
   steps:
@@ -112,6 +132,11 @@ rules:
   - intent: prestamos_domicilio
   - action: utter_prestamos_domicilio
 
+- rule: Préstamos general
+  steps:
+  - intent: prestamos_general
+  - action: utter_prestamos_general
+
 - rule: Préstamos en sala
   steps:
   - intent: prestamos_sala_lectura
@@ -147,6 +172,16 @@ rules:
   - intent: servicio_referencia
   - action: utter_servicio_referencia
 
+- rule: Hemeroteca
+  steps:
+  - intent: hemeroteca
+  - action: utter_hemeroteca
+
+- rule: Salas de lectura
+  steps:
+  - intent: salas_lectura
+  - action: utter_salas_lectura
+
 - rule: Preguntas fuera de alcance
   steps:
   - intent: out_of_scope
@@ -155,4 +190,19 @@ rules:
 - rule: Fallback por defecto
   steps:
   - intent: nlu_fallback
-  - action: utter_default
+  - action: action_buscar_catalogo
+
+- rule: Buscar libro por título
+  steps:
+  - intent: buscar_libro_titulo
+  - action: action_buscar_catalogo
+
+- rule: Buscar libro por autor
+  steps:
+  - intent: buscar_libro_autor
+  - action: action_buscar_catalogo
+
+- rule: Buscar libro por materia
+  steps:
+  - intent: buscar_libro_materia
+  - action: action_buscar_catalogo
