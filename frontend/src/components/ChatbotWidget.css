@@ -117,6 +117,16 @@
     border-bottom-left-radius: 4px;
 }
 
+.message.bot a {
+    color: #0b5394;
+    text-decoration: underline;
+    word-break: break-all;
+}
+
+.message.bot a:hover {
+    color: #083b68;
+}
+
 .chatbot-input {
     display: flex;
     align-items: center;

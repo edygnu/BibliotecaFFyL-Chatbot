@@ -1,5 +1,44 @@
 import React, { useState, useEffect, useRef } from 'react';
 
+const URL_REGEX = /(https?:\/\/[^\s<]+)/gi;
+const MARKDOWN_LINK_REGEX = /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/gi;
+
+const escapeHtml = (text = '') => (
+    text
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;')
+);
+
+const buildAnchor = (url, label = url) => {
+    const safeUrl = escapeHtml(url);
+    const safeLabel = escapeHtml(label);
+    return `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer">${safeLabel}</a>`;
+};
+
+const formatBotMessage = (text = '') => {
+    const markdownLinks = [];
+    let linkIndex = 0;
+
+    const textWithTokens = text.replace(MARKDOWN_LINK_REGEX, (_, label, url) => {
+        const token = `__CHATBOT_LINK_${linkIndex}__`;
+        markdownLinks.push({ token, html: buildAnchor(url, label) });
+        linkIndex += 1;
+        return token;
+    });
+
+    let html = escapeHtml(textWithTokens).replace(/\n/g, '<br />');
+    html = html.replace(URL_REGEX, (url) => buildAnchor(url));
+
+    markdownLinks.forEach(({ token, html: linkHtml }) => {
+        html = html.replace(token, linkHtml);
+    });
+
+    return html;
+};
+
 const Chatbot = () => {
     const [messages, setMessages] = useState([]);
     const [input, setInput] = useState('');
@@ -58,7 +97,11 @@ const Chatbot = () => {
             console.log(data);
 
             
-            const botMessages = data.map((msg) => ({ sender: "bot", text: msg.text }));
+            const botMessages = data.map((msg) => ({
+                sender: "bot",
+                text: msg.text || "",
+                html: formatBotMessage(msg.text || ""),
+            }));
             setMessages((prevMessages) => [...prevMessages, ...botMessages]);
             
         } catch (error) {
@@ -77,11 +120,20 @@ const Chatbot = () => {
                 ref={messagesContainerRef}
             >
                 {messages.map((msg, index) => (
-                    <div
-                        key={index}
-                        className={`message ${msg.sender}`}
-                        dangerouslySetInnerHTML={{ __html: msg.text }}
-                    />
+                    msg.sender === "bot" ? (
+                        <div
+                            key={index}
+                            className={`message ${msg.sender}`}
+                            dangerouslySetInnerHTML={{ __html: msg.html }}
+                        />
+                    ) : (
+                        <div
+                            key={index}
+                            className={`message ${msg.sender}`}
+                        >
+                            {msg.text}
+                        </div>
+                    )
                 ))}
                 {/* ← Elemento invisible al final para scroll automático */}
                 <div ref={messagesEndRef} style={{ height: '1px' }} />
