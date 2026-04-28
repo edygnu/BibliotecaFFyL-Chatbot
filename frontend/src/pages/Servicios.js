@@ -44,9 +44,9 @@ const servicios = [
         alt: "Referencia Bibliográfica",
         titulo: "Referencia Bibliográfica",
         texto: "Te ayudamos a identificar y localizar los materiales bibliográficos que necesites para tus estudios e investigaciones.",
-        link: "#",
+        link: "https://docs.google.com/forms/d/1WdbrACvhrE7Vr6k-cpJOmlXBASKe7mw4ajKBPOBVMN4/viewform?edit_requested=true&fbzx=7440154948116867691",
         linkText: "Pedir asesoramiento",
-        external: false
+        external: true
     },
     {
         img: "img/alfin.png",
@@ -71,9 +71,9 @@ const servicios = [
         alt: "Solicitud de Bibliografía",
         titulo: "Solicitud de Bibliografía",
         texto: "Pedinos nueva bibliografía que necesites que incorporemos en nuestro acervo.",
-        link: "#",
+        link: "https://docs.google.com/forms/d/17ascQCW_Yp8aQEKPqGbnGeHd46WbcG3eSIKVzOvX0FM/viewform?edit_requested=true&fbzx=-3015868566828932580",
         linkText: "Solicitar compra",
-        external: false
+        external: true
     }
 ];
 
