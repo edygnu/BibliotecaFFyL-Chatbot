@@ -39,9 +39,10 @@ const formatBotMessage = (text = '') => {
     return html;
 };
 
-const Chatbot = () => {
+const Chatbot = ({ onStatusChange }) => {
     const [messages, setMessages] = useState([]);
     const [input, setInput] = useState('');
+    const [isThinking, setIsThinking] = useState(false);
     const messagesEndRef = useRef(null);
     const messagesContainerRef = useRef(null);
 
@@ -66,6 +67,15 @@ const Chatbot = () => {
         scrollToBottom();
     }, [messages]);
 
+    useEffect(() => {
+        if (!onStatusChange) return;
+
+        onStatusChange({
+            inputActive: input.trim().length > 0,
+            botThinking: isThinking,
+        });
+    }, [input, isThinking, onStatusChange]);
+
     const handleInputChange = (event) => {
         setInput(event.target.value);
     };
@@ -80,6 +90,7 @@ const Chatbot = () => {
         
         setMessages((prevMessages) => [...prevMessages, userMessage]);
         setInput("");
+        setIsThinking(true);
 
         try {
             const response = await fetch("/webhooks/rest/webhook", {
@@ -110,6 +121,8 @@ const Chatbot = () => {
                 sender: "bot", 
                 text: "Lo siento, ha ocurrido un error. Intenta nuevamente." 
             }]);
+        } finally {
+            setIsThinking(false);
         }
     };
 

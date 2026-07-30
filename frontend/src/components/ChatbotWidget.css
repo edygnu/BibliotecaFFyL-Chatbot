@@ -1,37 +1,643 @@
-/* MOBILE FIRST: estilos base para móviles */
 .chatbot-widget {
     position: fixed;
     bottom: 16px;
     right: 16px;
     z-index: 9999;
+    --mascot-width-mobile: 116px;
+    --mascot-height-mobile: 116px;
+    --mascot-width-desktop: 116px;
+    --mascot-height-desktop: 116px;
+}
+
+.chatbot-comic-bubble {
+    position: absolute;
+    right: calc(var(--mascot-width-mobile) - 24px);
+    bottom: calc(var(--mascot-height-mobile) - 16px);
+    max-width: 104px;
+    padding: 6px 9px;
+    border: 2px solid #151515;
+    border-radius: 14px 14px 4px 14px;
+    background: #ffffff;
+    color: #111;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    line-height: 1.1;
+    box-shadow: 2px 2px 0 #151515;
+    transform: rotate(-0.75deg);
+    pointer-events: none;
+    user-select: none;
+    z-index: 10010;
+    opacity: 0;
+    animation: comic-bubble-callout 9s ease-in-out infinite;
+}
+
+.chatbot-comic-bubble::before,
+.chatbot-comic-bubble::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+
+.chatbot-comic-bubble::before {
+    right: -1px;
+    bottom: -14px;
+    border-left: 8px solid transparent;
+    border-right: 0 solid transparent;
+    border-top: 18px solid #151515;
+    transform: rotate(-8deg);
+}
+
+.chatbot-comic-bubble::after {
+    right: 0;
+    bottom: -10px;
+    border-left: 6px solid transparent;
+    border-right: 0 solid transparent;
+    border-top: 13px solid #ffffff;
+    transform: rotate(-8deg);
+}
+
+@keyframes comic-bubble-callout {
+    0%,
+    10%,
+    100% {
+        opacity: 0;
+        transform: translateY(5px) scale(0.95) rotate(-0.75deg);
+    }
+    11.2%,
+    27.8% {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotate(-0.75deg);
+    }
+    19% {
+        transform: translateY(-2px) scale(1.01) rotate(-0.4deg);
+    }
+    24% {
+        transform: translateY(0) scale(1) rotate(-0.85deg);
+    }
+    28.9% {
+        opacity: 0;
+        transform: translateY(3px) scale(0.97) rotate(-0.75deg);
+    }
 }
 
 .chatbot-toggle {
-    background: #007bff;
-    color: #fff;
+    background: transparent;
     border: none;
-    border-radius: 50%;
-    width: 48px;
-    height: 48px;
-    font-size: 1.7rem;
+    width: var(--mascot-width-mobile);
+    height: var(--mascot-height-mobile);
     cursor: pointer;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    transition: background 0.2s;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-origin: 50% 50%;
+    filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.3));
+    opacity: 1;
+    transition: transform 0.2s ease, filter 0.2s ease, opacity 0.08s linear;
 }
+
 .chatbot-toggle:hover {
-    background: #0056b3;
+    transform: translateY(-2px) scale(1.01);
+    filter: drop-shadow(0 14px 22px rgba(0, 0, 0, 0.35));
+}
+
+.chatbot-toggle-open {
+    width: 116px;
+    height: 116px;
+    right: 14px;
+    bottom: 12px;
+    position: fixed;
+}
+
+.chatbot-toggle.chatbot-toggle-launching {
+    -webkit-offset-path: path("M 0 0 C -0.99 -1.22, -2.54 -3.53, -4.63 -6.95 C -6.51 -10.14, -8.71 -12.57, -10.92 -13.57 C -12.24 -14.22, -12.57 -12.46, -11.58 -9.6 C -10.04 -5.52, -6.62 -3.97, -3.86 -4.85 C -1.66 -5.52, -0.55 -3.42, 0 0");
+    offset-path: path("M 0 0 C -0.99 -1.22, -2.54 -3.53, -4.63 -6.95 C -6.51 -10.14, -8.71 -12.57, -10.92 -13.57 C -12.24 -14.22, -12.57 -12.46, -11.58 -9.6 C -10.04 -5.52, -6.62 -3.97, -3.86 -4.85 C -1.66 -5.52, -0.55 -3.42, 0 0");
+    -webkit-offset-rotate: 0deg;
+    offset-rotate: 0deg;
+    animation: mascot-open-flight 1.85s linear 1 both;
+    z-index: 10020;
+    pointer-events: none;
+    will-change: offset-distance, transform;
+}
+
+.chatbot-toggle.chatbot-toggle-launching:hover {
+    transform: none;
+}
+
+.chatbot-mascot-shell {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.book-mascot-rig {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.mascot-layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.mascot-base {
+    filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.32));
+}
+
+.part {
+    transform-origin: center;
+    pointer-events: none;
+    will-change: transform;
+    transition: transform 140ms cubic-bezier(0.2, 0.75, 0.2, 1);
+}
+
+.book-mascot-rig.gesture-wave {
+    animation: none !important;
+    transform: none !important;
+}
+
+.book-mascot-rig.gesture-wave .mascot-base,
+.book-mascot-rig.gesture-wave .eye,
+.book-mascot-rig.gesture-wave .brow-left,
+.book-mascot-rig.gesture-wave .brow-right,
+.book-mascot-rig.gesture-wave .mouth {
+    animation: none !important;
+    transform: none !important;
+}
+
+.eye {
+    animation: eye-blink 8.8s ease-in-out infinite;
+}
+
+.eye-left {
+    clip-path: ellipse(4.6% 5.2% at 47.5% 37.8%);
+    transform-origin: 47.5% 37.8%;
+}
+
+.eye-right {
+    clip-path: ellipse(4.6% 5.2% at 58.5% 37.8%);
+    transform-origin: 58.5% 37.8%;
+}
+
+.brow-left {
+    clip-path: ellipse(6.1% 3.8% at 46.8% 25.1%);
+    transform-origin: 46.8% 25.1%;
+    animation: brow-idle 2.8s ease-in-out infinite;
+    display: none;
+}
+
+.brow-right {
+    clip-path: ellipse(7.2% 5% at 59.1% 24.3%);
+    transform-origin: 59.1% 24.3%;
+    animation: brow-idle 2.8s ease-in-out infinite;
+}
+
+.mouth {
+    clip-path: ellipse(11.8% 10.2% at 53.2% 52.6%);
+    transform-origin: 53.2% 52.6%;
+    animation: mouth-idle 2.4s ease-in-out infinite;
+}
+
+.hand-left {
+    clip-path: polygon(4% 19%, 24% 16%, 29% 30%, 28% 45%, 22% 58%, 11% 62%, 4% 53%, 2% 36%);
+    transform-origin: 23.5% 41.8%;
+}
+
+.hand-right {
+    clip-path: ellipse(8.6% 10.8% at 84.6% 58.8%);
+    transform-origin: 86% 63%;
+}
+
+.hand-left,
+.hand-right {
+    transition: none;
+}
+
+.book-mascot-rig.is-closed {
+    animation: body-float 3.4s ease-in-out infinite;
+}
+
+.book-mascot-rig.is-open {
+    animation: body-open-idle 2.8s ease-in-out infinite;
+}
+
+.book-mascot-rig.is-closed .hand-right {
+    animation: hand-idle 4.4s ease-in-out infinite;
+}
+
+.book-mascot-rig.gesture-smile .mouth {
+    animation: mouth-smile 0.8s ease-in-out infinite;
+}
+
+.book-mascot-rig.gesture-wave .hand-left {
+    animation: hand-wave-single 1.15s cubic-bezier(0.26, 0.9, 0.35, 1) infinite;
+    backface-visibility: hidden;
+    transform-box: fill-box;
+    z-index: 2;
+}
+
+.book-mascot-rig.gesture-wave .hand-right {
+    animation: none !important;
+    transform: none !important;
+    backface-visibility: hidden;
+}
+
+.book-mascot-rig.gesture-look-left .eye-left,
+.book-mascot-rig.gesture-look-left .eye-right {
+    animation: eye-blink 8.8s ease-in-out infinite;
+}
+
+.book-mascot-rig.gesture-look-right .eye-left,
+.book-mascot-rig.gesture-look-right .eye-right {
+    animation: eye-blink 8.8s ease-in-out infinite;
+}
+
+.book-mascot-rig.gesture-look-left {
+    animation: body-look-left 1.25s ease-in-out infinite;
+}
+
+.book-mascot-rig.gesture-look-right {
+    animation: body-look-right 1.25s ease-in-out infinite;
+}
+
+.book-mascot-rig.gesture-look-left .brow-left,
+.book-mascot-rig.gesture-look-left .brow-right,
+.book-mascot-rig.gesture-look-right .brow-left,
+.book-mascot-rig.gesture-look-right .brow-right {
+    animation: brow-curious 1.25s ease-in-out infinite;
+}
+
+.book-mascot-rig.gesture-blink-fast .eye-left,
+.book-mascot-rig.gesture-blink-fast .eye-right {
+    animation: eye-blink-fast 1.7s ease-in-out infinite;
+}
+
+.book-mascot-rig.gesture-nod {
+    animation: body-nod 1.1s ease-in-out infinite;
+}
+
+.book-mascot-rig.gesture-listening .eye-left {
+    animation: eye-listen-left 0.8s ease-in-out infinite;
+}
+
+.book-mascot-rig.gesture-listening .eye-right {
+    animation: eye-listen-right 0.8s ease-in-out infinite;
+}
+
+.book-mascot-rig.gesture-listening .brow-left,
+.book-mascot-rig.gesture-listening .brow-right {
+    animation: brow-listen 0.8s ease-in-out infinite;
+}
+
+.book-mascot-rig.gesture-listening {
+    animation: body-listen 1.25s ease-in-out infinite;
+}
+
+.book-mascot-rig.gesture-ponder {
+    animation: body-ponder 1.6s ease-in-out infinite;
+}
+
+.book-mascot-rig.gesture-ponder .eye-left {
+    animation: none !important;
+    transform: none !important;
+}
+
+.book-mascot-rig.gesture-ponder .eye-right {
+    animation: none !important;
+    transform: none !important;
+}
+
+.book-mascot-rig.gesture-ponder .mouth {
+    animation: none !important;
+    transform: none !important;
+}
+
+.book-mascot-rig.gesture-ponder .brow-left {
+    animation: none !important;
+    transform: none !important;
+}
+
+.book-mascot-rig.gesture-ponder .brow-right {
+    animation: none !important;
+    transform: none !important;
+}
+
+.book-mascot-rig.gesture-ponder .hand-right {
+    animation: hand-ponder 1.6s ease-in-out infinite;
+}
+
+@keyframes body-float {
+    0%,
+    100% { transform: translateY(0); }
+    18% { transform: translateY(-0.5px); }
+    50% { transform: translateY(-2.3px); }
+    78% { transform: translateY(-0.7px); }
+}
+
+@keyframes body-open-idle {
+    0%,
+    100% { transform: translateY(0) rotate(-0.5deg); }
+    38% { transform: translateY(-0.8px) rotate(0.22deg); }
+    70% { transform: translateY(-0.3px) rotate(-0.12deg); }
+}
+
+@keyframes body-nod {
+    0%,
+    100% { transform: translateY(0); }
+    24% { transform: translateY(-0.4px); }
+    56% { transform: translateY(1.9px); }
+    78% { transform: translateY(0.4px); }
+}
+
+@keyframes body-listen {
+    0%,
+    100% { transform: translateY(0) rotate(0deg); }
+    40% { transform: translateY(-1px) rotate(-0.6deg); }
+    70% { transform: translateY(-0.2px) rotate(0.35deg); }
+}
+
+@keyframes body-thinking {
+    0%,
+    100% { transform: translateY(0) rotate(0deg); }
+    30% { transform: translateY(-0.4px) rotate(-0.7deg); }
+    58% { transform: translateY(-1px) rotate(0.4deg); }
+}
+
+@keyframes body-ponder {
+    0%,
+    100% { transform: translateY(0) rotate(0deg); }
+    22% { transform: translateY(-0.4px) rotate(-0.9deg); }
+    58% { transform: translateY(-1px) rotate(0.55deg); }
+    82% { transform: translateY(-0.3px) rotate(0deg); }
+}
+
+@keyframes body-look-left {
+    0%,
+    100% { transform: translateY(0) rotate(0deg); }
+    30% { transform: translateY(-0.3px) rotate(0.35deg); }
+    60% { transform: translateY(-0.8px) rotate(-0.85deg); }
+    82% { transform: translateY(-0.2px) rotate(-0.4deg); }
+}
+
+@keyframes body-look-right {
+    0%,
+    100% { transform: translateY(0) rotate(0deg); }
+    30% { transform: translateY(-0.3px) rotate(-0.35deg); }
+    60% { transform: translateY(-0.8px) rotate(0.85deg); }
+    82% { transform: translateY(-0.2px) rotate(0.4deg); }
+}
+
+@keyframes eye-blink {
+    0%,
+    40%,
+    44%,
+    79%,
+    84%,
+    100% { transform: scaleY(1) translateY(0); }
+    41%,
+    43% { transform: scaleY(0.22) translateY(0.5px); }
+    80%,
+    83% { transform: scaleY(0.16) translateY(0.6px); }
+}
+
+@keyframes eye-blink-fast {
+    0%,
+    30%,
+    38%,
+    68%,
+    76%,
+    100% { transform: scaleY(1) translateY(0); }
+    31%,
+    37%,
+    69%,
+    75% { transform: scaleY(0.18) translateY(0.55px); }
+}
+
+@keyframes eye-look-left {
+    0%,
+    100% { transform: translateX(0); }
+    28% { transform: translateX(0.4px); }
+    58% { transform: translateX(-2.2px); }
+    78% { transform: translateX(-1.2px); }
+}
+
+@keyframes eye-look-right {
+    0%,
+    100% { transform: translateX(0); }
+    28% { transform: translateX(-0.4px); }
+    58% { transform: translateX(2.2px); }
+    78% { transform: translateX(1.2px); }
+}
+
+@keyframes eye-listen-left {
+    0%,
+    100% { transform: scaleY(1); }
+    50% { transform: scaleY(0.9); }
+}
+
+@keyframes eye-listen-right {
+    0%,
+    100% { transform: scaleY(1); }
+    50% { transform: scaleY(0.9); }
+}
+
+@keyframes eye-think-left {
+    0%,
+    100% { transform: scaleY(1) translateY(0); }
+    50% { transform: scaleY(0.74) translateY(-0.6px); }
+}
+
+@keyframes eye-think-right {
+    0%,
+    100% { transform: scaleY(1) translateY(0); }
+    50% { transform: scaleY(0.74) translateY(-0.6px); }
+}
+
+@keyframes eye-ponder-left {
+    0%,
+    100% { transform: translate(0, 0); }
+    24% { transform: translate(-0.6px, -0.2px); }
+    52% { transform: translate(-1.4px, -0.2px); }
+    76% { transform: translate(-0.5px, 0); }
+}
+
+@keyframes eye-ponder-right {
+    0%,
+    100% { transform: translate(0, 0); }
+    24% { transform: translate(-0.55px, -0.2px); }
+    52% { transform: translate(-1.25px, -0.2px); }
+    76% { transform: translate(-0.45px, 0); }
+}
+
+@keyframes mouth-idle {
+    0%,
+    100% { transform: scale(1, 1) translateY(0); }
+    35% { transform: scale(1.01, 0.97) translateY(0.2px); }
+    60% { transform: scale(1.03, 0.95) translateY(-0.2px); }
+}
+
+@keyframes mouth-smile {
+    0%,
+    100% { transform: scale(1, 1) translateY(0); }
+    22% { transform: scale(0.98, 1.02) translateY(0.2px); }
+    56% { transform: scale(1.13, 0.9) translateY(-1px); }
+    80% { transform: scale(1.07, 0.95) translateY(-0.4px); }
+}
+
+@keyframes mouth-think {
+    0%,
+    100% { transform: scale(0.96, 1.04); }
+    24% { transform: scale(0.9, 1.08); }
+    56% { transform: scale(1.07, 0.84); }
+    78% { transform: scale(1, 0.92); }
+}
+
+@keyframes mouth-ponder {
+    0%,
+    100% { transform: translate(0, 0) rotate(0deg); }
+    36% { transform: translate(-0.35px, 0.2px) rotate(-1.2deg); }
+    64% { transform: translate(-0.15px, 0.1px) rotate(-0.6deg); }
+}
+
+@keyframes brow-idle {
+    0%,
+    100% { transform: translateY(0); }
+    50% { transform: translateY(-0.8px); }
+}
+
+@keyframes brow-listen {
+    0%,
+    100% { transform: translateY(0); }
+    40% { transform: translateY(-2.1px); }
+    66% { transform: translateY(-0.8px); }
+}
+
+@keyframes brow-curious {
+    0%,
+    100% { transform: translateY(0); }
+    45% { transform: translateY(-1.5px); }
+    72% { transform: translateY(-0.6px); }
+}
+
+@keyframes brow-think-left {
+    0%,
+    100% { transform: translateY(0) rotate(0deg); }
+    28% { transform: translateY(-2.2px) rotate(-9deg); }
+    58% { transform: translateY(-1.4px) rotate(-5deg); }
+    78% { transform: translateY(-1.8px) rotate(-7deg); }
+}
+
+@keyframes brow-think-right {
+    0%,
+    100% { transform: translateY(0) rotate(0deg); }
+    28% { transform: translateY(-0.8px) rotate(4deg); }
+    58% { transform: translateY(-0.3px) rotate(2deg); }
+    78% { transform: translateY(-0.6px) rotate(3deg); }
+}
+
+@keyframes brow-ponder-left {
+    0%,
+    100% { transform: translateY(0) rotate(0deg); }
+    24% { transform: translateY(-2.4px) rotate(-10deg); }
+    54% { transform: translateY(-1.5px) rotate(-6deg); }
+    78% { transform: translateY(-2px) rotate(-8deg); }
+}
+
+@keyframes brow-ponder-right {
+    0%,
+    100% { transform: translateY(0) rotate(0deg); }
+    24% { transform: translateY(-0.6px) rotate(3deg); }
+    54% { transform: translateY(-0.25px) rotate(1.5deg); }
+    78% { transform: translateY(-0.45px) rotate(2.2deg); }
+}
+
+@keyframes hand-wave-main {
+    0%,
+    100% { transform: rotate(0deg) translateY(0); }
+    14% { transform: rotate(-1.5deg) translateY(0); }
+    34% { transform: rotate(5.5deg) translateY(-0.4px); }
+    54% { transform: rotate(-6deg) translateY(-0.7px); }
+    76% { transform: rotate(4.5deg) translateY(-0.4px); }
+}
+
+@keyframes hand-wave-support {
+    0%,
+    100% { transform: rotate(0deg) translateY(0); }
+    14% { transform: rotate(0.6deg) translateY(0); }
+    34% { transform: rotate(-4deg) translateY(-0.3px); }
+    54% { transform: rotate(4.5deg) translateY(-0.6px); }
+    76% { transform: rotate(-3.2deg) translateY(-0.3px); }
+}
+
+@keyframes hand-wave-single {
+    0%,
+    100% { transform: rotate(0deg) translate(0, 0); }
+    16% { transform: rotate(-1.4deg) translate(0, 0); }
+    36% { transform: rotate(5.8deg) translate(0.05px, -0.2px); }
+    56% { transform: rotate(-6.4deg) translate(0.08px, -0.36px); }
+    74% { transform: rotate(4.8deg) translate(0.05px, -0.22px); }
+}
+
+@keyframes hand-think {
+    0%,
+    100% { transform: translate(0, 0) rotate(0deg); }
+    30% { transform: translate(-0.6px, -1px) rotate(-2deg); }
+    58% { transform: translate(-2px, -3px) rotate(-6deg); }
+    78% { transform: translate(-1px, -1.5px) rotate(-3deg); }
+}
+
+@keyframes hand-ponder {
+    0%,
+    100% { transform: translate(0, 0) rotate(0deg); }
+    24% { transform: translate(-0.8px, -1.2px) rotate(-2.5deg); }
+    52% { transform: translate(-1.8px, -2.4px) rotate(-5.4deg); }
+    78% { transform: translate(-1.1px, -1.5px) rotate(-3.3deg); }
+}
+
+@keyframes hand-idle {
+    0%,
+    100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-0.7px) rotate(1.4deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .book-mascot-rig,
+    .part,
+    .eye,
+    .brow-left,
+    .brow-right,
+    .mouth,
+    .hand-left,
+    .hand-right {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .chatbot-toggle.chatbot-toggle-launching {
+        animation: none !important;
+    }
 }
 
 .chatbot-popup {
     position: fixed;
-    bottom: 72px;
+    bottom: calc(var(--mascot-height-mobile) + 32px);
     right: 8px;
     width: 95vw;
     max-width: 380px;
     min-width: 0;
     background: #f9f9f9;
     border-radius: 14px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -40,8 +646,101 @@
 }
 
 @keyframes chatbot-fade-in {
-    from { opacity: 0; transform: translateY(30px);}
-    to { opacity: 1; transform: translateY(0);}
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes mascot-open-flight {
+    0% {
+        -webkit-offset-distance: 0%;
+        offset-distance: 0%;
+        transform: scale(1);
+        opacity: 1;
+    }
+    12% {
+        -webkit-offset-distance: 12%;
+        offset-distance: 12%;
+        transform: scale(0.94);
+        opacity: 1;
+    }
+    24% {
+        -webkit-offset-distance: 24%;
+        offset-distance: 24%;
+        transform: scale(0.86);
+        opacity: 1;
+    }
+    36% {
+        -webkit-offset-distance: 36%;
+        offset-distance: 36%;
+        transform: scale(0.74);
+        opacity: 1;
+    }
+    48% {
+        -webkit-offset-distance: 48%;
+        offset-distance: 48%;
+        transform: scale(0.64);
+        opacity: 1;
+    }
+    58% {
+        -webkit-offset-distance: 58%;
+        offset-distance: 58%;
+        transform: scale(0.6);
+        opacity: 1;
+    }
+    68% {
+        -webkit-offset-distance: 68%;
+        offset-distance: 68%;
+        transform: scale(0.66);
+        opacity: 1;
+    }
+    78% {
+        -webkit-offset-distance: 78%;
+        offset-distance: 78%;
+        transform: scale(0.74);
+        opacity: 1;
+    }
+    86% {
+        -webkit-offset-distance: 86%;
+        offset-distance: 86%;
+        transform: scale(0.82);
+        opacity: 1;
+    }
+    92% {
+        -webkit-offset-distance: 92%;
+        offset-distance: 92%;
+        transform: scale(0.89);
+        opacity: 1;
+    }
+    96% {
+        -webkit-offset-distance: 96%;
+        offset-distance: 96%;
+        transform: scale(0.94);
+        opacity: 1;
+    }
+    98% {
+        -webkit-offset-distance: 98%;
+        offset-distance: 98%;
+        transform: scale(0.97);
+        opacity: 1;
+    }
+    99% {
+        -webkit-offset-distance: 99%;
+        offset-distance: 99%;
+        transform: scale(0.985);
+        opacity: 1;
+    }
+    99.6% {
+        -webkit-offset-distance: 99.6%;
+        offset-distance: 99.6%;
+        transform: scale(0.994);
+        opacity: 1;
+    }
+    100% {
+        -webkit-offset-distance: 100%;
+        offset-distance: 100%;
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 .chatbot-close {
@@ -56,6 +755,7 @@
     z-index: 2;
     transition: color 0.2s;
 }
+
 .chatbot-close:hover {
     color: #007bff;
 }
@@ -73,17 +773,19 @@
     scrollbar-width: thin;
     scrollbar-color: #007bff #e0e0e0;
     font-size: 1rem;
-    
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
 }
+
 .chatbot-messages::-webkit-scrollbar {
     width: 5px;
 }
+
 .chatbot-messages::-webkit-scrollbar-thumb {
     background: #007bff;
     border-radius: 4px;
 }
+
 .chatbot-messages::-webkit-scrollbar-track {
     background: #e0e0e0;
     border-radius: 4px;
@@ -96,7 +798,7 @@
     font-size: 1rem;
     line-height: 1.4;
     word-break: break-word;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
     margin-bottom: 2px;
     display: inline-block;
     position: relative;
@@ -146,6 +848,7 @@
     transition: border 0.2s;
     background: #f7f7f7;
 }
+
 .chatbot-input input[type="text"]:focus {
     border: 1.5px solid #007bff;
     background: #fff;
@@ -163,36 +866,83 @@
     margin-left: 2px;
     cursor: pointer;
     transition: background 0.2s;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     padding: 0;
 }
+
 .whatsapp-send-btn:hover,
 .whatsapp-send-btn:focus {
     background: #0056b3;
 }
+
 .whatsapp-send-btn svg {
     display: block;
     width: 22px;
     height: 22px;
 }
 
-/* --- RESPONSIVE PARA TABLET Y DESKTOP --- */
+@media (max-width: 599px) and (orientation: portrait) {
+    .chatbot-widget {
+        --mascot-width-mobile: 99px;
+        --mascot-height-mobile: 99px;
+        right: 4px;
+        bottom: 12px;
+    }
+
+    .chatbot-toggle-open {
+        right: 2px;
+        bottom: 8px;
+        width: var(--mascot-width-mobile);
+        height: var(--mascot-height-mobile);
+    }
+
+    .chatbot-comic-bubble {
+        right: calc(var(--mascot-width-mobile) - 14px);
+        bottom: calc(var(--mascot-height-mobile) - 8px);
+        max-width: 96px;
+        font-size: 0.74rem;
+        padding: 5px 8px;
+    }
+
+    .chatbot-comic-bubble::before {
+        right: -2px;
+        bottom: -13px;
+    }
+
+    .chatbot-comic-bubble::after {
+        right: -1px;
+        bottom: -9px;
+    }
+
+    .chatbot-popup {
+        right: 4px;
+        bottom: calc(var(--mascot-height-mobile) + 20px);
+    }
+}
+
 @media (min-width: 600px) {
+    .chatbot-comic-bubble {
+        right: calc(var(--mascot-width-desktop) - 20px);
+        bottom: calc(var(--mascot-height-desktop) - 12px);
+    }
+
     .chatbot-popup {
         width: 350px;
         right: 24px;
-        bottom: 90px;
+        bottom: calc(var(--mascot-height-desktop) + 28px);
         max-width: 95vw;
     }
+
     .chatbot-toggle {
-        width: 56px;
-        height: 56px;
-        font-size: 2rem;
+        width: var(--mascot-width-desktop);
+        height: var(--mascot-height-desktop);
     }
+
     .whatsapp-send-btn {
         width: 44px;
         height: 44px;
     }
+
     .chatbot-messages {
         max-height: 350px;
         font-size: 1.05rem;
