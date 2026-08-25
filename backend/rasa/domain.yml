@@ -16,6 +16,8 @@ intents:
   - atraso_libro
   - consultar_coleccion
   - donacion_libros
+  - hablar_otro_idioma
+  - alfin
   - horarios_biblioteca
   - telefonos_biblioteca
   - recursos_bibliograficos
@@ -45,18 +47,34 @@ intents:
 
 responses:
   utter_saludar:
-    - text: "¡Hola! ¿Cómo estás?"
+    - text: "¡Hola! Soy el asistente de la Biblioteca FFyL. ¿En qué puedo ayudarte hoy?"
+    - text: "¡Hola! Estoy para ayudarte con horarios, préstamos, catálogo y servicios de la biblioteca. ¿Qué necesitás?"
+
+  utter_idioma_no_disponible:
+    - text: "Por el momento sólo estoy programado para dar respuestas en español."
+
+  utter_alfin:
+    - text: |
+        Ofrecemos cursos de ALFIN adaptados a cada etapa de tu carrera:
+
+        - Nivel Inicial: Para conocer los espacios y servicios de la biblioteca.
+        - Nivel Básico - Ingreso a la Vida Académica: Herramientas de búsqueda para primer año.
+        - Nivel Básico - Trayecto Avanzado: Fuentes especializadas según tu carrera.
+        - Nivel Avanzado: Apoyo para trabajos finales y tesis.
+        - Nivel Especializado: Gestión avanzada de información para investigación.
+
+        Para más información consultá en Dirección de Biblioteca.
 
   utter_despedirse:
-    - text: "¡Hasta luego! Que tengas un buen día."
-    - text: "¡Adiós! Espero haberte ayudado. ¡Volvé cuando necesites!"
-    - text: "¡Nos vemos! La Biblioteca FFyL está aquí cuando la necesites."
+    - text: "¡Hasta luego! Si necesitás algo más de la biblioteca, volvé a escribirnos."
+    - text: "¡Adiós! Espero haberte ayudado. Cuando quieras, te sigo ayudando con préstamos, horarios o búsqueda de material."
+    - text: "¡Nos vemos! La Biblioteca FFyL está aquí para ayudarte cuando la necesites."
 
   utter_estado_bot:
-    - text: "Bien, gracias. Soy un bot desarrollado por la Biblioteca de la Facultad de Filosofía y Letras. ¿En qué te puedo ayudar?"
+    - text: "Estoy bien, gracias. Soy el asistente virtual de la Biblioteca FFyL y puedo ayudarte con servicios, horarios, préstamos y búsquedas. ¿En qué te puedo ayudar?"
 
   utter_soy_un_bot:
-    - text: "Soy un bot desarrollado por la Biblioteca de la Facultad de Filosofía y Letras"
+    - text: "Soy un bot de la Biblioteca FFyL, pensado para ayudarte con horarios, préstamos, salas, catálogo y servicios de la facultad."
 
   utter_feliz:
     - text: "¡Qué bueno! ¿En qué te puedo ayudar?"
@@ -77,16 +95,16 @@ responses:
     - text: "¡Gracias por seguirnos! ¿En qué más te puedo ayudar?"
 
   utter_agradecer:
-    - text: "De nada, un placer poder ayudarte."
+    - text: "¡Claro! Un gusto ayudarte. ¿Querés revisar otra consulta de la biblioteca?"
 
   utter_afirmar:
-    - text: "Perfecto. Decime qué necesitás y te ayudo."
+    - text: "Perfecto. Decime qué necesitás y te ayudo con la Biblioteca FFyL."
 
   utter_negar:
-    - text: "Está bien. Si querés, puedo ayudarte con horarios, préstamos, carnet o contacto."
+    - text: "No hay problema. Si más adelante querés, puedo ayudarte con horarios, préstamos, carnets, salas o búsquedas en el catálogo."
 
   utter_no_necesita_ayuda:
-    - text: "Perfecto. Si más tarde necesitás algo de la Biblioteca, escribime y te ayudo."
+    - text: "Perfecto. Cuando quieras, volvemos a hablar y te ayudo con lo que necesites de la Biblioteca."
 
   utter_cantidad_libros:
     - text: "Podés retirar hasta 6 libros a domicilio durante 7 días y 3 libros si son de consulta en la sala."
@@ -137,7 +155,7 @@ responses:
     - text: "Préstamos a domicilio: podés retirar hasta 6 libros durante 7 días."
 
   utter_prestamos_sala_lectura:
-    - text: "Préstamo en sala de lectura: podés consultar en sala de lectura todo material de referencia como los diccionarios, publicaciones periódicas, folletos y ejemplares únicos. Recordá que tenés que devolverlo en el día."
+    - text: "En sala de lectura podés consultar material de referencia y otros materiales de uso interno durante el día. El préstamo en sala es por el día y se devuelve en el momento o al cierre del servicio."
 
   utter_prestamos_fin_semana:
     - text: "Préstamo de fin de semana: podrás retirar un libro que sea de consulta a sala el día viernes con devolución el día lunes por la mañana."
@@ -164,10 +182,13 @@ responses:
     - text: "Contamos con una Sala Parlante y una Sala Silenciosa para que puedas trabajar en grupo o estudiar en silencio. Consulta más en la sección Servicios."
 
   utter_out_of_scope:
-    - text: "Por el momento no tengo una respuesta a esa pregunta. ¿En qué más te puedo ayudar?"
+    - text: "No tengo una respuesta clara para eso todavía, pero puedo ayudarte con horarios, préstamos, salas, carnet o búsqueda de material. ¿Qué te interesa?"
 
   utter_default:
-    - text: "Por el momento no tengo una respuesta a esa pregunta. ¿En qué más te puedo ayudar?"
+    - text: "No tengo una respuesta clara para eso todavía. Podés preguntarme por horarios, préstamos, salas, carnet o buscar libros por título, autor o tema."
+
+  utter_busqueda_ambigua:
+    - text: "¿Te referís a un autor, a un título o a un tema? Por ejemplo: 'libros de George Martin', 'Juego de Tronos' o 'historia'."
 
   utter_pedir_titulo:
     - text: "¿Cuál es el título del libro que estás buscando?"

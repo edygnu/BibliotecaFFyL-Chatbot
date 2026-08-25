@@ -1,0 +1,16 @@
+{
+  "watch": [
+    "bin",
+    "models",
+    "public",
+    "routes",
+    "views",
+    "app.js"
+  ],
+  "ignore": [
+    "rasa/**",
+    "rasa-env/**",
+    "node_modules/**",
+    "**/.git/**"
+  ]
+}

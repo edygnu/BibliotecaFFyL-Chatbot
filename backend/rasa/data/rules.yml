@@ -1,3 +1,4 @@
+
 version: "3.1"
 
 rules:
@@ -6,6 +7,16 @@ rules:
   steps:
   - intent: saludar
   - action: utter_saludar
+
+- rule: Habla otro idioma
+  steps:
+  - intent: hablar_otro_idioma
+  - action: utter_idioma_no_disponible
+
+- rule: Información ALFIN
+  steps:
+  - intent: alfin
+  - action: utter_alfin
 
 - rule: Despedida
   steps:

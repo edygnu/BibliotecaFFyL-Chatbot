@@ -4,7 +4,9 @@ nlu:
 - intent: saludar
   examples: |
     - hola
+    - buen día
     - buenos días
+    - buen dia
     - buenas tardes
     - buenas noches
     - qué tal
@@ -12,7 +14,61 @@ nlu:
     - hola a todos
     - hola, ¿qué tal?
     - hey
+    - hello
+    - hi
+    - good morning
+    - good afternoon
+    - good evening
+    - good day
+    - bonjour
+    - bon jour
+    - bonsoir
+    - olá
+    - bom dia
+    - guten tag
+    - buongiorno
+    - ciao
     - saludos
+
+- intent: hablar_otro_idioma
+  examples: |
+    - ¿pueden hablar en inglés?
+    - ¿hablan en español o en inglés?
+    - ¿se puede consultar en francés?
+    - ¿puedo hacer consultas en portugués?
+    - ¿pueden responder en alemán?
+    - ¿hablan en italiano?
+    - ¿pueden hablar en otro idioma?
+    - ¿podrían responder en otro idioma?
+    - ¿podes hablar en otro idioma?
+    - ¿solo hablan español?
+    - ¿sólo atienden en español?
+    - ¿el bot habla inglés?
+    - ¿puedo hacer preguntas en inglés?
+    - do you speak english?
+    - can you answer in french?
+    - do you speak portuguese?
+    - sprechen sie deutsch?
+    - parlez-vous français?
+    - parli in italiano?
+    - vocês falam português?
+
+- intent: alfin
+  examples: |
+    - ALFIN
+    - Cursos de ALFIN
+    - Información sobre ALFIN
+    - Alfabetización Informacional
+    - Cursos de Alfabetización Informacional
+    - Capacitaciones
+    - Cursos dictados por la biblioteca
+    - ¿qué es ALFIN?
+    - ¿tienen cursos de ALFIN?
+    - ¿qué cursos ofrecen?
+    - cursos de alfabetización informacional
+    - cursos de capacitacion
+    - informacion sobre alfabetizacion informacional
+    - capacitaciones de la biblioteca
 
 - intent: despedirse
   examples: |
@@ -418,11 +474,19 @@ nlu:
     - cuánto dura el préstamo
     - préstamos normales
     - libros para casa
+    - ¿cuántos días puedo retirar un libro?
+    - cuantos dias puedo retirar un libro
+    - ¿cuántos días puedo llevar un libro a casa?
+    - ¿cuánto tiempo puedo tener un libro?
+    - ¿cuánto puedo mantener un libro?
 
 - intent: prestamos_sala_lectura
   examples: |
     - préstamo en sala de lectura
     - préstamos en sala
+    - préstamo de sala
+    - préstamos de sala
+    - prestamos de sala
     - consulta en sala
     - material de referencia
     - diccionarios
@@ -431,6 +495,10 @@ nlu:
     - ¿puedo consultar en sala?
     - consulta interna
     - lectura en biblioteca
+    - ¿cuántos días puedo usar un libro en sala?
+    - ¿cuánto tiempo puedo consultar material en sala?
+    - ¿puedo llevarme un libro a la sala?
+    - material para usar en sala
 
 - intent: prestamos_fin_semana
   examples: |
@@ -615,6 +683,15 @@ nlu:
     - tienen [rayuela](titulo_libro)?
     - rayuela, ¿lo tienen?
     - busco [rayuela](titulo_libro)
+    - quiero consultar si hay [El Hobbit](titulo_libro)
+    - ¿está [El principito](titulo_libro) en el catálogo?
+    - me interesa el título [La insoportable levedad del ser](titulo_libro)
+    - llamame si tienen [La tregua](titulo_libro)
+    - quiero buscar [Matar un ruiseñor](titulo_libro)
+    - ¿hay [El aleph](titulo_libro) disponible?
+    - necesito el título [Pedro Páramo](titulo_libro)
+    - ¿tienen [Ficciones](titulo_libro) en la biblioteca?
+    - busco [La metamorfosis](titulo_libro)
     - buscame [La casa de Bernarda Alba](titulo_libro)
     - ¿existe el libro [El nombre de la rosa](titulo_libro) en el catálogo?
     - necesito el libro [Ficciones](titulo_libro)
@@ -655,10 +732,22 @@ nlu:
 
 - intent: buscar_libro_autor
   examples: |
+    - ¿tienen libros de [George R. R. Martin](autor_libro)?
+    - libros de [George Martin](autor_libro)
+    - busca obras de [George Martin](autor_libro)
+    - ¿hay algo de [George Martin](autor_libro)?
+    - quiero ver libros de [George Martin](autor_libro)
+    - me interesa la obra de [Martin](autor_libro)
     - ¿tienen libros de [Borges](autor_libro)?
     - buscame libros de [Shakespeare](autor_libro)
     - ¿qué libros tienen de [García Márquez](autor_libro)?
     - quiero ver libros de [Cortázar](autor_libro)
+    - ¿hay material del autor [Sábato](autor_libro)?
+    - libros del escritor [Jorge Luis Borges](autor_libro)
+    - obras de [Tolkien](autor_libro)
+    - me gustaría consultar a [Virginia Woolf](autor_libro)
+    - ¿existe algo de [Julio Cortázar](autor_libro)?
+    - buscar publicaciones de [Foucault](autor_libro)
     - ¿hay material de [Neruda](autor_libro) en la biblioteca?
     - buscar autor [Cervantes](autor_libro)
     - obras de [Sartre](autor_libro)
@@ -712,6 +801,10 @@ nlu:
     - material sobre [estudios de género](materia_libro)
     - recursos de [historia latinoamericana](materia_libro)
     - consultar tema [filosofía política](materia_libro)
+    - necesito algo sobre [ciencias sociales](materia_libro)
+    - busco temas de [literatura comparada](materia_libro)
+    - ¿tenés material de [teoría del arte](materia_libro)?
+    - quiero referencias sobre [psicoanálisis](materia_libro)
 
 - intent: out_of_scope
   examples: |

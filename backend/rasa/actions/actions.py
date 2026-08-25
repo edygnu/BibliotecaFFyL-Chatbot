@@ -14,6 +14,142 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet
 
 
+def normalizar_texto(texto: Text) -> Text:
+    if not texto:
+        return ""
+    return re.sub(r"\s+", " ", str(texto).strip().lower())
+
+
+def es_saludo(texto: Text) -> bool:
+    """Devuelve True cuando la frase es un saludo y no una búsqueda en catálogo."""
+    texto_norm = normalizar_texto(texto)
+    if not texto_norm:
+        return False
+
+    return bool(
+        re.search(
+            r"\b(?:hola|hi|hello|hey|saludos|buen\s*d[ií]a(?:s)?|buen(?:os|as)\s*d[ií]a(?:s)?|buenas?\s*(?:tardes|noches)|good\s+(?:morning|afternoon|evening|day)|bonjour|bon\s*jour|bonsoir|ol[aá]|bom\s*d[ii]a|guten\s+tag|ciao|buongiorno|salve|que\s+tal)\b",
+            texto_norm,
+            flags=re.IGNORECASE,
+        )
+    )
+
+
+def es_pregunta_idioma_respuesta(texto: Text) -> bool:
+    """Detecta preguntas sobre el idioma del bot, no consultas por libros en otro idioma."""
+    texto_norm = normalizar_texto(texto)
+    if not texto_norm:
+        return False
+
+    # Excluimos consultas bibliográficas del tipo "libros en idioma inglés".
+    if re.search(
+        r"\b(?:libro|libros|material(?:es)?|texto|textos|bibliograf[íi]a)\b.*\b(?:en|de)\b.*\b(?:idioma\s+)?(?:ingl[eé]s|franc[eé]s|portugu[eé]s|alem[aá]n|italiano|espa[nñ]ol|english|french|german|italian|portuguese|spanish)\b",
+        texto_norm,
+        flags=re.IGNORECASE,
+    ):
+        return False
+
+    if re.search(
+        r"\b(?:pueden?|podemos?|puedo|se\s+puede|hablan?|responden?|contestan?|habla|hablo|parlez|speak|sprechen|falam)\b.*\b(?:ingl[eé]s|franc[eé]s|portugu[eé]s|alem[aá]n|italiano|espa[nñ]ol|english|french|german|italian|portuguese|spanish)\b",
+        texto_norm,
+        flags=re.IGNORECASE,
+    ):
+        return True
+
+    if re.search(
+        r"\b(?:idioma|lengua|lenguaje)\b.*\b(?:ingl[eé]s|franc[eé]s|portugu[eé]s|alem[aá]n|italiano|espa[nñ]ol|english|french|german|italian|portuguese|spanish)\b|\b(?:ingl[eé]s|franc[eé]s|portugu[eé]s|alem[aá]n|italiano|espa[nñ]ol|english|french|german|italian|portuguese|spanish)\b.*\b(?:idioma|lengua|lenguaje)\b",
+        texto_norm,
+        flags=re.IGNORECASE,
+    ) and re.search(r"\b(?:hablan?|pueden?|puedo|responden?|contestan?|solo|solamente|s[óo]lo)\b", texto_norm, flags=re.IGNORECASE):
+        return True
+
+    return False
+
+
+def es_consulta_por_idioma_catalogo(texto: Text) -> bool:
+    """Detecta consultas por idioma que deberían ir al catálogo, no a la respuesta del bot."""
+    texto_norm = normalizar_texto(texto)
+    if not texto_norm:
+        return False
+
+    if es_pregunta_idioma_respuesta(texto_norm):
+        return False
+
+    patron = (
+        r"\b(?:libro|libros|material(?:es)?|texto|textos|bibliograf[íi]a|consulta|consultas)\b"
+        r".*\b(?:en|de)\b.*\b(?:idioma\s+)?(?:ingl[eé]s|franc[eé]s|portugu[eé]s|alem[aá]n|italiano|espa[nñ]ol|english|french|german|italian|portuguese|spanish)\b"
+        r"|\b(?:en|de)\s+idioma\s+(?:ingl[eé]s|franc[eé]s|portugu[eé]s|alem[aá]n|italiano|espa[nñ]ol|english|french|german|italian|portuguese|spanish)\b"
+    )
+    return bool(re.search(patron, texto_norm, flags=re.IGNORECASE))
+
+
+def extraer_idioma(texto: Text) -> Text:
+    texto_norm = normalizar_texto(texto)
+    if not texto_norm:
+        return ""
+    match = re.search(
+        r"(?:idioma\s+)?(ingl[eé]s|franc[eé]s|portugu[eé]s|alem[aá]n|italiano|espa[nñ]ol|english|french|german|italian|portuguese|spanish)",
+        texto_norm,
+        flags=re.IGNORECASE,
+    )
+    if not match:
+        return ""
+    return match.group(1).strip()
+
+
+TEMAS_GENERICOS = {
+    "literatura", "historia", "filosofia", "politica", "economia", "sociologia",
+    "antropologia", "psicologia", "educacion", "arte", "poesia", "ensayo",
+    "teologia", "derecho", "justicialismo", "cultura", "biografia", "medicina",
+    "linguistica", "geografia", "arquitectura", "musica", "teoria"
+}
+
+AMBIGUOS_SURNAMES = {
+    "martin", "martinez", "gonzalez", "lopez", "garcia", "perez", "sanchez",
+    "fernandez", "rodriguez", "torres", "ramirez", "castro", "sosa", "moreno",
+}
+NOMBRES_PROBABLES = {
+    "george", "juan", "jose", "josefina", "maria", "maría", "pedro", "ana", "luis",
+    "carlos", "sofia", "gabriel", "gustavo", "marta", "fernando", "lucia",
+    "nicolas", "nicolás", "diana", "martin", "jorge"
+}
+
+
+def es_tema_generico(texto: Text) -> bool:
+    """Detecta temas demasiado amplios que deberían requerir aclaración antes de buscar."""
+    texto_norm = normalizar_texto(texto)
+    if not texto_norm:
+        return False
+    return texto_norm in TEMAS_GENERICOS
+
+
+def es_consulta_ambigua_por_autor(texto: Text) -> bool:
+    """Identifica consultas cortas y ambiguas que requieren aclaración antes de buscar."""
+    texto_norm = normalizar_texto(texto)
+    if not texto_norm:
+        return False
+
+    if re.search(r"\b(?:libro|libros|material(?:es)?|obra|obras|autor|escritor|escritora)\b", texto_norm, flags=re.IGNORECASE):
+        if re.search(r"\b(?:de|del|de la|de los|de las)\s+[a-záéíóúüñ]+\b", texto_norm, flags=re.IGNORECASE):
+            return False
+
+    palabras = [p for p in re.split(r"\s+", texto_norm) if p]
+    if len(palabras) == 1:
+        return palabras[0] in AMBIGUOS_SURNAMES
+
+    if len(palabras) == 2:
+        if palabras[0] in NOMBRES_PROBABLES and palabras[1] in AMBIGUOS_SURNAMES:
+            return True
+        if palabras[0] in {"martin", "fierro"} and palabras[1] in AMBIGUOS_SURNAMES:
+            return False
+
+    if len(palabras) >= 2 and palabras[0] in {"hay", "busco", "buscó", "busco", "quiero", "necesito"}:
+        if any(p in AMBIGUOS_SURNAMES for p in palabras[1:]):
+            return False
+
+    return False
+
+
 class ActionHelloWorld(Action):
 
     def name(self) -> Text:
@@ -82,6 +218,16 @@ class ActionBuscarCatalogo(Action):
             if not original:
                 return {}
 
+            # Los saludos y las preguntas sobre el idioma del bot no deben interpretarse como consulta de catálogo.
+            if es_saludo(original) or es_pregunta_idioma_respuesta(original):
+                return {}
+
+            # Las consultas por idioma del material deben tratarse como materia, no como autor ni título.
+            if es_consulta_por_idioma_catalogo(original):
+                idioma = extraer_idioma(original)
+                if idioma:
+                    return {"tipo": "Subject", "termino": idioma, "etiqueta": f'material en idioma "*{idioma}*"'}
+
             # Solo asumir título libre cuando el intent ya sugiere búsqueda.
             permitir_titulo_libre = intent_name in {
                 "buscar_libro_titulo",
@@ -89,12 +235,32 @@ class ActionBuscarCatalogo(Action):
                 "buscar_libro_materia",
             }
 
+            if es_consulta_ambigua_por_autor(original):
+                return {}
+
+            # Si la consulta es muy corta y no indica título ni autor, pedimos aclaración
+            # en vez de buscar a ciegas con un "martin" como si fuera un libro.
+            if len([p for p in re.split(r'\s+', original) if p]) <= 2 and not re.search(
+                r'\b(?:libro|libros|autor|autora|obra|obras|t[íi]tulo|materia|tema|escritor|escritora|bibliograf[íi]a|material)\b',
+                original,
+                flags=re.IGNORECASE,
+            ):
+                return {}
+
             # Pistas semánticas para activar búsqueda cuando el intent cayó en fallback.
             pistas_catalogo = re.search(
                 r'\b(libro|libros|autor|autora|obra|obras|t[íi]tulo|cat[áa]logo|buscar|busco|busc[áa]|bibliograf[íi]a|material|materia|tema|novela|cuento|poes[íi]a|ensayo)\b',
                 original,
                 flags=re.IGNORECASE,
             )
+
+            texto_sin_prefijo = re.sub(
+                r'^(?:por favor\s+)?(?:busco|buscame|busc[áa]|quiero|necesito|consultar|consultame|me interesa|tienen|ten[ée]s|hay)\s+(?:el|la|los|las)?\s*',
+                "",
+                original,
+                flags=re.IGNORECASE,
+            )
+            texto_sin_prefijo = limpiar_termino(texto_sin_prefijo)
 
             # Permite consultas cortas que suelen ser solo título (ej: "Dune").
             palabras = [p for p in re.split(r'\s+', original) if p]
@@ -144,6 +310,16 @@ class ActionBuscarCatalogo(Action):
                 if materia_inf:
                     return {"tipo": "Subject", "termino": materia_inf, "etiqueta": f'material sobre la materia "*{materia_inf}*"'}
 
+            patron_sobre = re.search(
+                r'^(?:busco|buscame|quiero|necesito|me interesa|buscar|consultar|consultame|hay)\s+(?:libros?|material(?:es)?|bibliograf[íi]a|textos?)\s+(?:sobre|acerca de)\s+(.+)$',
+                original,
+                flags=re.IGNORECASE,
+            )
+            if patron_sobre:
+                materia_inf = limpiar_termino(patron_sobre.group(1))
+                if materia_inf:
+                    return {"tipo": "Subject", "termino": materia_inf, "etiqueta": f'material sobre la materia "*{materia_inf}*"'}
+
             patron_titulo = re.search(
                 r'(?:libro|t[íi]tulo)\s+(?:"|\')?(.+)',
                 original,
@@ -154,13 +330,51 @@ class ActionBuscarCatalogo(Action):
                 if titulo_inf:
                     return {"tipo": "Title", "termino": titulo_inf, "etiqueta": f'el libro "*{titulo_inf}*"'}
 
+            palabras = [p for p in re.split(r'\s+', original) if p]
+            palabras_limpias = [p.lower() for p in palabras]
+            keywords_materia = TEMAS_GENERICOS | {"mendocina"}
+            nombre_persona = bool(re.fullmatch(
+                r"[A-ZÁÉÍÓÚÜÑ][A-Za-zÁÉÍÓÚÜÑáéíóúüñ]+(?:\s+[A-ZÁÉÍÓÚÜÑ][A-Za-zÁÉÍÓÚÜÑáéíóúüñ]+)+",
+                original,
+            ))
+            tiene_patron_sobre_tema = bool(re.search(
+                r'\b(?:libros?|material(?:es)?|bibliograf[íi]a|textos?)\s+(?:sobre|acerca de)\b',
+                original,
+                flags=re.IGNORECASE,
+            ))
+            es_materia_generica = (
+                len(palabras) >= 2 and not nombre_persona and (
+                    any(p in keywords_materia for p in palabras_limpias)
+                    or re.fullmatch(r"[a-záéíóúüñ]+(?:\s+[a-záéíóúüñ]+){1,5}", original, flags=re.IGNORECASE) is not None
+                )
+            ) or (
+                len(palabras) == 1 and palabras_limpias[0] in keywords_materia and not nombre_persona
+            )
+            materia_probable = (
+                es_materia_generica
+                or (
+                    len(palabras) >= 2
+                    or (len(palabras) == 1 and len(palabras[0]) >= 7)
+                ) and not nombre_persona and not re.search(r'^(?:d[oó]nde|cuando|c[uú]ando|qu[eé]|qui[eé]n|c[oó]mo|por\s+qu[eé])\b', original, flags=re.IGNORECASE)
+            ) and not re.search(r'\b(?:hola|buen\s*d[ií]a|hello|hi|bonjour|good\s+morning|buenas\s+tardes|buenas\s+noches)\b', original, flags=re.IGNORECASE)
+            if tiene_patron_sobre_tema:
+                tema = limpiar_termino(re.sub(r'^(?:busco|buscame|quiero|necesito|me interesa|buscar|consultar|consultame|hay)\s+(?:libros?|material(?:es)?|bibliograf[íi]a|textos?)\s+(?:sobre|acerca de)\s*', '', original, flags=re.IGNORECASE))
+                if tema:
+                    return {"tipo": "Subject", "termino": tema, "etiqueta": f'material sobre la materia "*{tema}*"'}
+            if nombre_persona and not re.search(r'\b(?:libro|t[ií]tulo|autor|escritor|autora)\b', original, flags=re.IGNORECASE):
+                return {"tipo": "Author", "termino": limpiar_termino(original), "etiqueta": f'libros del autor "*{limpiar_termino(original)}*"'}
+            if materia_probable:
+                materia_inf = texto_sin_prefijo or limpiar_termino(original)
+                if materia_inf:
+                    return {"tipo": "Subject", "termino": materia_inf, "etiqueta": f'material sobre la materia "*{materia_inf}*"'}
+
             intent_name = intent_name or ""
             if intent_name == "buscar_libro_autor":
                 autor_inf = limpiar_termino(original)
                 if autor_inf:
                     return {"tipo": "Author", "termino": autor_inf, "etiqueta": f'libros del autor "*{autor_inf}*"'}
             if intent_name == "buscar_libro_materia":
-                materia_inf = limpiar_termino(original)
+                materia_inf = texto_sin_prefijo or limpiar_termino(original)
                 if materia_inf:
                     return {"tipo": "Subject", "termino": materia_inf, "etiqueta": f'material sobre la materia "*{materia_inf}*"'}
 
@@ -176,12 +390,6 @@ class ActionBuscarCatalogo(Action):
                     if autor_inf:
                         return {"tipo": "Author", "termino": autor_inf, "etiqueta": f'libros del autor "*{autor_inf}*"'}
 
-            texto_sin_prefijo = re.sub(
-                r'^(?:por favor\s+)?(?:busco|buscame|busc[áa]|quiero|necesito|consultar|consultame|me interesa|tienen|ten[ée]s|hay)\s+(?:el|la|los|las)?\s*',
-                "",
-                original,
-                flags=re.IGNORECASE,
-            )
             if (
                 not permitir_titulo_libre
                 and not titulo_corto_probable
@@ -189,7 +397,14 @@ class ActionBuscarCatalogo(Action):
             ):
                 return {}
 
-            titulo_inf = limpiar_termino(texto_sin_prefijo or original)
+            # Si el texto es una frase temática en minúsculas (ej. "literatura mendocina", "justicialismo"),
+            # la consideramos materia antes que un título libre.
+            if texto_sin_prefijo and re.fullmatch(r"[a-záéíóúüñ]+(?:\s+[a-záéíóúüñ]+){0,5}", texto_sin_prefijo, flags=re.IGNORECASE):
+                palabras_sin_prefijo = [p.lower() for p in re.split(r'\s+', texto_sin_prefijo) if p]
+                if any(p in {"literatura", "historia", "filosofia", "politica", "economia", "sociologia", "antropologia", "psicologia", "educacion", "arte", "poesia", "ensayo", "teologia", "derecho", "justicialismo", "mendocina", "cultura", "biografia", "medicina", "linguistica", "geografia", "arquitectura", "musica", "teoria"} for p in palabras_sin_prefijo):
+                    return {"tipo": "Subject", "termino": texto_sin_prefijo, "etiqueta": f'material sobre la materia "*{texto_sin_prefijo}*"'}
+
+            titulo_inf = texto_sin_prefijo or limpiar_termino(original)
             if titulo_inf:
                 return {"tipo": "Title", "termino": titulo_inf, "etiqueta": f'el libro "*{titulo_inf}*"'}
             return {}
@@ -245,6 +460,16 @@ class ActionBuscarCatalogo(Action):
         if tracker.latest_message:
             intent_actual = tracker.latest_message.get("intent", {}).get("name", "")
 
+        if es_pregunta_idioma_respuesta(texto_usuario):
+            dispatcher.utter_message(text="Por el momento sólo estoy programado para dar respuestas en español.")
+            return [
+                SlotSet("titulo_libro", None),
+                SlotSet("autor_libro", None),
+                SlotSet("materia_libro", None),
+            ]
+
+        inferido = inferir_desde_texto(texto_usuario, intent_actual) if texto_usuario else {}
+
         if titulo:
             termino = titulo
             tipo = "Title"
@@ -253,21 +478,26 @@ class ActionBuscarCatalogo(Action):
             termino = autor
             tipo = "Author"
             etiqueta = f"libros del autor \"*{autor}*\""
+        elif inferido:
+            termino = inferido["termino"]
+            tipo = inferido["tipo"]
+            etiqueta = inferido["etiqueta"]
         elif materia:
             termino = materia
             tipo = "Subject"
             etiqueta = f"material sobre la materia \"*{materia}*\""
         else:
-            inferido = inferir_desde_texto(texto_usuario, intent_actual)
-            if not inferido:
-                if intent_actual == "nlu_fallback":
-                    dispatcher.utter_message(text="Por el momento no tengo una respuesta a esa pregunta. ¿En qué más te puedo ayudar?")
-                else:
-                    dispatcher.utter_message(text="Por favor indicame el título, autor o materia que querés buscar.")
+            if es_tema_generico(texto_usuario):
+                dispatcher.utter_message(text="¿Te referís a literatura en general, literatura argentina o literatura mendocina? Si querés, te puedo buscar un tema más específico.")
                 return []
-            termino = inferido["termino"]
-            tipo = inferido["tipo"]
-            etiqueta = inferido["etiqueta"]
+            if es_consulta_ambigua_por_autor(texto_usuario):
+                dispatcher.utter_message(text="¿Te referís a un autor, a un título o a un tema? Por ejemplo: 'libros de George Martin', 'Juego de Tronos' o 'historia'.")
+                return []
+            if intent_actual == "nlu_fallback":
+                dispatcher.utter_message(text="Por el momento no tengo una respuesta a esa pregunta. ¿En qué más te puedo ayudar?")
+            else:
+                dispatcher.utter_message(text="Podés buscar por título, autor o tema. Por ejemplo: 'libros de Borges', 'El Quijote' o 'historia'.")
+            return []
 
         logger.info(f"Buscando en catálogo: {tipo}='{termino}'")
         
@@ -361,7 +591,11 @@ class ActionBuscarCatalogo(Action):
                 SlotSet("materia_libro", None),
             ]
 
-        lineas = [f"Encontré **{total}** resultado(s) para {etiqueta} en {sede}. Acá te muestro los primeros:"]
+        linea_inicial = (
+            f"Encontré **{total}** resultados para {etiqueta} en {sede}. "
+            "Te dejo los más relevantes:"
+        )
+        lineas = [linea_inicial]
         for rec in registros:
             t = rec.get("title", "Sin título")
             autor_str = extraer_autor(rec)
@@ -376,6 +610,7 @@ class ActionBuscarCatalogo(Action):
         }, doseq=True)
         url_catalogo = f"{self.RESULTADOS_URL}?{params_url}"
         lineas.append(f"\n🔗 [Ver todos los resultados en el catálogo]({url_catalogo})")
+        lineas.append("\nSi querés, te puedo ayudar a filtrar por autor, buscar una versión más específica o reformular la búsqueda.")
 
         dispatcher.utter_message(text="\n".join(lineas))
         return [
