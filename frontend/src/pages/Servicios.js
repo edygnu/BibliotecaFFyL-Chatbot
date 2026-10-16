@@ -30,22 +30,13 @@ const servicios = [
         linkText: "Reglamento",
         external: false
     },
-    // {
-    //     img: "img/DSI.jpg",
-    //     alt: "DSI",
-    //     titulo: "DSI",
-    //     texto: "Mediante la Diseminación Selectiva de la Información atendemos las necesidades específicas de bibliografía de nuestros usuarios.",
-    //     link: "#",
-    //     linkText: "Consultar",
-    //     external: false
-    // },
     {
-        img: "img/referencia.jpg",
-        alt: "Referencia Bibliográfica",
-        titulo: "Referencia Bibliográfica",
-        texto: "Te ayudamos a identificar y localizar los materiales bibliográficos que necesites para tus estudios e investigaciones.",
-        link: "https://docs.google.com/forms/d/1WdbrACvhrE7Vr6k-cpJOmlXBASKe7mw4ajKBPOBVMN4/viewform?edit_requested=true&fbzx=7440154948116867691",
-        linkText: "Pedir asesoramiento",
+        img: "img/Tesis.jpg",
+        alt: "Tesis",
+        titulo: "Tesis",
+        texto: "Autorización excepcional por el decano de la facultad para el acceso a tesis doctorales.",
+        link: "files/DDJJ_Tesis.pdf",
+        linkText: "Descargar formulario",
         external: true
     },
     {
